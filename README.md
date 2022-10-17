@@ -4,7 +4,7 @@
  **Group members**
  
  The project will be realised by a group composed of 4 students :
- - Andrea Sembrana
+ - Andrea Sembrana https://github.com/andreasembrana19
  - Theo Fernandez https://github.com/pondohoo
  - Eddie Nguyen
  - Camille Lacroix https://github.com/clacr002
