@@ -1,7 +1,7 @@
 #ifndef MOVIES_H
 #define MOVIES_H
 
-#include "Movies.h"
+#include "Movie.h"
 
 using namespace std;
 
