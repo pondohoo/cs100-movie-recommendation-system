@@ -35,5 +35,6 @@ Authors
 <img width="897" alt="Screen Shot 2022-10-31 at 17 33 18" src="https://user-images.githubusercontent.com/90938120/199135624-96287e93-982f-47d4-98c8-265237a0a18c.png">
 
  ### Diagram Description
-
+Movie class: used to create objects of individual movies so that various information about each movie can be quickly accessed and displayed to the screen
+Movies class: an interface that allows for recommendations of movies to be created from a vector array of Movie objects and sorted based on various options
 
