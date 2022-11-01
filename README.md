@@ -28,3 +28,12 @@ Authors
 
 * The outputted list will have the possibility to be sorted based on rating, release date, alphabetical order, or popularity
  
+## Phase II - Documentation
+
+### Class Diagram
+
+<img width="897" alt="Screen Shot 2022-10-31 at 17 33 18" src="https://user-images.githubusercontent.com/90938120/199135624-96287e93-982f-47d4-98c8-265237a0a18c.png">
+
+ ### Diagram Description
+
+
