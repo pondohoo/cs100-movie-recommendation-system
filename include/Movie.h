@@ -23,7 +23,7 @@ class Movie {
         void setGenres(vector<string> );
         string getDirector();
         void setDirector(string );
-        double setDirector();
+        double getRating();
         void setRating(double );
         string getReleaseDate();
         void setReleaseDate(string );
