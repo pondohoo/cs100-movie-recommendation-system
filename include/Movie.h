@@ -10,23 +10,25 @@ using namespace std;
 class Movie {
     private:
         string name;
-        vector<string> genres;
+        string genre;
+
         string director;
+        string starringActor;
+        
         double rating;
-        string releaseDate;
+        double totalVotes;
+        string releaseYear;
 
     public:
-        Movie();
+        Movie(string name, string genre, string director, string starringActor, double rating, double totalVotes, int releaseYear);
         string getName();
-        void setName(string );
-        vector<string> getGenres();
-        void setGenres(vector<string> );
+        string getGenre();
         string getDirector();
-        void setDirector(string );
-        double setDirector();
-        void setRating(double );
-        string getReleaseDate();
-        void setReleaseDate(string );
+        string getStarringActor();
+        double getRating();
+        double getTotalVotes();
+        double getReleaseYear();
+
 
 };
 
