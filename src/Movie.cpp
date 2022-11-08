@@ -1,4 +1,4 @@
-#include "Movie.h"
+#include "../include/Movie.h"
 
 Movie::Movie(string movieName, string genreName, string directorName, string actor, double ratingValue, double votes, int year)
     : name(movieName),

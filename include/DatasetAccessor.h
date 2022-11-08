@@ -1,5 +1,5 @@
 #ifndef DATASETACCESSOR_H
-#define DATASET_ACCESSOR_H
+#define DATASETACCESSOR_H
 
 #include "Movie.h"
 #include <vector>
