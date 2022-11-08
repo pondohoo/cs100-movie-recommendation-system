@@ -1,28 +1,27 @@
-#include "../include/Movie.h"
+#include "Movie.h"
 
-Movie::Movie(string movieName, vector<string> genreList, string directorName, double ratings, string date)
+Movie::Movie(string movieName, string genreName, string directorName, string actor, double ratingValue, double votes, int year)
     : name(movieName),
-      genres(genreList),
+      genre(genreName),
       director(directorName),
-      rating(ratings),
-      releaseDate(date) { }
+      starringActor(actor),
+      rating(ratingValue),
+      totalVotes(votes),
+      releaseYear(year) { }
+
 
 string Movie::getName() { return name; }
 
 string Movie::getDirector() { return director; }
 
-string Movie::getReleaseDate() { return releaseDate; }
+string Movie::getStarringActor() { return starringActor; }
+
+int Movie::getReleaseYear() { return releaseYear; }
 
 double Movie::getRating() { return rating; }
 
-vector<string> Movie::getGenres() { return genres; }
+double Movie::getTotalVotes() { return totalVotes; }
 
-void Movie::setName(string name) { this->name = name; }
+string Movie::getGenre() { return genre; }
 
-void Movie::setDirector(string directorName) { this->director = directorName; }
 
-void Movie::setRating(double rating) { this->rating = rating; }
-
-void Movie::setReleaseDate(string releaseDate) { this->releaseDate = releaseDate; }
-
-void Movie::setGenres(vector<string> genreList) { this->genres = genreList; }
