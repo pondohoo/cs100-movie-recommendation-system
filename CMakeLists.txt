@@ -19,6 +19,7 @@ set(Headers
 set(Sources
     ./src/Movie.cpp
     ./src/Movies.cpp
+    ./src/DatasetAccessor.cpp
 )
 
 add_library(${This} STATIC ${Sources} ${Headers})
