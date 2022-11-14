@@ -38,3 +38,15 @@ Authors
 Movie class: used to create objects of individual movies so that various information about each movie can be quickly accessed and displayed to the screen
 Movies class: an interface that allows for recommendations of movies to be created from a vector array of Movie objects and sorted based on various options
 
+## Phase III - Development, Testing and Second Scrum Meeting
+
+### Updated Class Diagram
+
+<img width="917" alt="image" src="https://user-images.githubusercontent.com/90938120/201766287-2755068d-d1be-4093-9624-c68e583d33d5.png">
+
+### Diagram Description
+Movies class: The primary interface for performing the operations of the program. Can create recommendations of movies using generateRecommendations() given a vector of Movie objects. Generates this vector of Movie objects in the constructor by utilizing the DatasetAccessor class. Has 3 separate functions for sorting the recommended list of movies––by name, by release date, and by popularity. Is capable of printing this recommended list using iostream to allow users to see their recommendations.
+
+Movie class: Objects of the Movie class store information for each movie parsed from the movie dataset. Information it stores in member variables include: name, genre, director, starring actor, rating, total votes, and release year. Also allows access to each of these through getter functions.
+
+DatasetAccessor class: All of the work for accessing and parsing through the movies.csv dataset file is directed to this class. Through generateMoviesVector(), creates vector<Movie> allMovies for the Movies class.
