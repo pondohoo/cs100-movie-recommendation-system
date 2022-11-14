@@ -16,7 +16,7 @@ class Movie {
         string starringActor;
         
         double rating;
-        double totalVotes;
+        int totalVotes;
         int releaseYear;
 
     public:
