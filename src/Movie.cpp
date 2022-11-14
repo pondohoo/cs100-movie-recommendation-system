@@ -1,6 +1,6 @@
 #include "../include/Movie.h"
 
-Movie::Movie(string movieName, string genreName, string directorName, string actor, double ratingValue, double votes, int year)
+Movie::Movie(string movieName, string genreName, string directorName, string actor, double ratingValue, int votes, int year)
     : name(movieName),
       genre(genreName),
       director(directorName),
@@ -20,7 +20,7 @@ int Movie::getReleaseYear() { return releaseYear; }
 
 double Movie::getRating() { return rating; }
 
-double Movie::getTotalVotes() { return totalVotes; }
+int Movie::getTotalVotes() { return totalVotes; }
 
 string Movie::getGenre() { return genre; }
 

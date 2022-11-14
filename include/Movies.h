@@ -2,7 +2,6 @@
 #define MOVIES_H
 
 #include "Movie.h"
-#include "DatasetAccessor.h"
 
 using namespace std;
 
@@ -16,7 +15,7 @@ class Movies {
 
     public:
         // utilizes DatasetAccessor to create a vector of all movies and
-        // initialize allMovies to that vector
+        // initialize vector<Movie> allMovies to that vector
         Movies();
 
 

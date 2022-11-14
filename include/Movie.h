@@ -16,18 +16,18 @@ class Movie {
         string starringActor;
         
         double rating;
-        double totalVotes;
+        int totalVotes;
         int releaseYear;
 
     public:
-        Movie(string name, string genre, string director, string starringActor, double rating, double totalVotes, int releaseYear);
+        Movie(string name, string genre, string director, string starringActor, double rating, int totalVotes, int releaseYear);
         string getName();
         string getGenre();
         string getDirector();
         int getReleaseYear();
         string getStarringActor();
         double getRating();
-        double getTotalVotes();
+        int getTotalVotes();
 
 
 };
