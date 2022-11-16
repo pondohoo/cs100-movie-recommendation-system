@@ -40,6 +40,16 @@ vector<Movie> DatasetAccessor::generateMoviesVector()
 
         // store each entry in the row into an individual variable
         getline(inputString, name, ',');
+
+        if (name.at(0) == '\"') // case in which name has a comma in it 
+        // (always starts) with a quote
+        {   
+              name += ",";
+              getline(inputString, tempString, '\"');
+              name += tempString;
+              // remove the quote at the beginning from the name
+              name = name.substr(1, name.size() - 1);
+        }
         getline(inputString, genre, ',');
         getline(inputString, tempString, ',');
         // convert string to int when needed
