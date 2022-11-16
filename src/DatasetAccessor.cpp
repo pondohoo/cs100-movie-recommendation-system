@@ -48,6 +48,8 @@ vector<Movie> DatasetAccessor::generateMoviesVector()
               name += tempString;
               // remove the quote at the beginning from the name
               name = name.substr(1, name.size() - 1);
+              // clear stream to allow for genre to be read
+              getline(inputString, tempString, ',');
         }
         getline(inputString, genre, ',');
         getline(inputString, tempString, ',');
