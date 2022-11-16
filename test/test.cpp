@@ -92,8 +92,6 @@ TEST(RatingSortTest, sortfirst10MoviesByRating) {
 
 }
 
-TEST()
-
 TEST(RatingSortTest, findHighestRated) {
     Movies TestMovies2;
 
@@ -112,6 +110,6 @@ TEST(RatingSortTest, findHighestRated) {
         cout << endl;
     }
 
-    // EXPECT_EQ(TestMovies2.recommendedMovies.at(0).getName(), "The Shawshank Redemption");
+    //EXPECT_EQ(TestMovies2.recommendedMovies.at(0).getName(), "The Shawshank Redemption");
 }
 
