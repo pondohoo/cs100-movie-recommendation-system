@@ -18,7 +18,7 @@ class Movies {
         // initialize vector<Movie> allMovies to that vector
         Movies();
 
-
+        void SortRecommendedMoviebyRating();
         void SortRecommendedMoviesbyName();
         void SortRecommendedMoviesbyRelease();
         void SortRecommendedMoviesbyPopularity();
