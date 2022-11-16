@@ -49,6 +49,15 @@ TEST(MoviesVectorSetupTests, Test2500thMovie)
     EXPECT_EQ(generatedMovieVector.at(2499).getRating(), 6.5);
 }
 
+TEST(MoviesVectorSetupTests, TestMovieNamesWithComma) {
+    DatasetAccessor myDataset = DatasetAccessor();
+    
+    vector<Movie> generatedMovieVector = myDataset.generateMoviesVector();
+    EXPECT_EQ(generatedMovieVector.at(71).getName(), "Bon Voyage, Charlie Brown (and Don't Come Back!!)");
+    EXPECT_EQ(generatedMovieVector.at(1476).getName(), "The Cook, the Thief, His Wife & Her Lover");
+
+}
+
 TEST(MoviesVectorSetupTests, TestNumMovies) {
     DatasetAccessor myDataset = DatasetAccessor();
     
@@ -60,3 +69,4 @@ TEST(MoviesVectorSetupTests, TestNumMovies) {
 
 
 }
+
