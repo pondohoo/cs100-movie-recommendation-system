@@ -15,11 +15,13 @@ set(Headers
     ./include/DatasetAccessor.h
     ./include/Movie.h
     ./include/Movies.h
+    ./include/InputOutputHandler.h
 )
 set(Sources
     ./src/Movie.cpp
     ./src/Movies.cpp
     ./src/DatasetAccessor.cpp
+    ./src/InputOutputHandler.cpp
 )
 add_library(${This} STATIC ${Sources} ${Headers})
 add_executable(${This} ${Sources})
