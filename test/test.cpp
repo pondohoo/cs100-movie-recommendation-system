@@ -49,12 +49,25 @@ TEST(MoviesVectorSetupTests, Test2500thMovie)
     EXPECT_EQ(generatedMovieVector.at(2499).getRating(), 6.5);
 }
 
-TEST(MoviesVectorSetupTests, TestMovieNamesWithComma) {
+TEST(MoviesVectorSetupTests, TestMoviesWithComma) {
     DatasetAccessor myDataset = DatasetAccessor();
     
     vector<Movie> generatedMovieVector = myDataset.generateMoviesVector();
     EXPECT_EQ(generatedMovieVector.at(71).getName(), "Bon Voyage, Charlie Brown (and Don't Come Back!!)");
+    EXPECT_EQ(generatedMovieVector.at(71).getGenre(), "Animation");
+    EXPECT_EQ(generatedMovieVector.at(71).getReleaseYear(), 1980);
+    EXPECT_EQ(generatedMovieVector.at(71).getRating(), 7.3);
+    EXPECT_EQ(generatedMovieVector.at(71).getTotalVotes(), 2900);
+    EXPECT_EQ(generatedMovieVector.at(71).getDirector(), "Bill Melendez");
+    EXPECT_EQ(generatedMovieVector.at(71).getStarringActor(), "Scott Beach");
+
     EXPECT_EQ(generatedMovieVector.at(1476).getName(), "The Cook, the Thief, His Wife & Her Lover");
+    EXPECT_EQ(generatedMovieVector.at(1476).getGenre(), "Crime");
+    EXPECT_EQ(generatedMovieVector.at(1476).getReleaseYear(), 1989);
+    EXPECT_EQ(generatedMovieVector.at(1476).getRating(), 7.6);
+    EXPECT_EQ(generatedMovieVector.at(1476).getTotalVotes(), 36000);
+    EXPECT_EQ(generatedMovieVector.at(1476).getDirector(), "Peter Greenaway");
+    EXPECT_EQ(generatedMovieVector.at(1476).getStarringActor(), "Richard Bohringer");
 
 }
 
@@ -99,17 +112,32 @@ TEST(RatingSortTest, findHighestRated) {
 
     TestMovies2.SortRecommendedMoviesbyRating();
 
-    for (int i = 0; i < 10; ++i) {
-        cout << TestMovies2.recommendedMovies.at(i).getName() << endl;
-        cout << TestMovies2.recommendedMovies.at(i).getGenre() << endl;
-        cout << TestMovies2.recommendedMovies.at(i).getDirector() << endl;
-        cout << TestMovies2.recommendedMovies.at(i).getStarringActor() << endl;
-        cout << TestMovies2.recommendedMovies.at(i).getRating() << endl;
-        cout << TestMovies2.recommendedMovies.at(i).getTotalVotes() << endl;
-        cout << TestMovies2.recommendedMovies.at(i).getReleaseYear() << endl;
-        cout << endl;
-    }
+    // for (int i = 0; i < 10; ++i) {
+    //     cout << TestMovies2.recommendedMovies.at(i).getName() << endl;
+    //     cout << TestMovies2.recommendedMovies.at(i).getGenre() << endl;
+    //     cout << TestMovies2.recommendedMovies.at(i).getDirector() << endl;
+    //     cout << TestMovies2.recommendedMovies.at(i).getStarringActor() << endl;
+    //     cout << TestMovies2.recommendedMovies.at(i).getRating() << endl;
+    //     cout << TestMovies2.recommendedMovies.at(i).getTotalVotes() << endl;
+    //     cout << TestMovies2.recommendedMovies.at(i).getReleaseYear() << endl;
+    //     cout << endl;
+    // }
 
-    //EXPECT_EQ(TestMovies2.recommendedMovies.at(0).getName(), "The Shawshank Redemption");
+    EXPECT_EQ(TestMovies2.recommendedMovies.at(0).getName(), "The Shawshank Redemption");
+}
+
+TEST(RatingSortTest, findLowestRated) {
+    Movies TestMovies3;
+
+    TestMovies3.recommendedMovies = TestMovies3.allMovies;
+
+    TestMovies3.SortRecommendedMoviesbyRating();
+
+    // cout << TestMovies3.recommendedMovies.at(7667).getName() << endl;
+    // cout << TestMovies3.recommendedMovies.at(7667).getRating() << endl;
+    // cout << TestMovies3.recommendedMovies.at(7666).getName() << endl;
+
+    EXPECT_EQ(TestMovies3.recommendedMovies.at(7667).getName(), "Love by Drowning");
+
 }
 
