@@ -21,8 +21,12 @@ set(Sources
     ./src/Movies.cpp
     ./src/DatasetAccessor.cpp
 )
-
 add_library(${This} STATIC ${Sources} ${Headers})
+add_executable(${This} ${Sources})
+
 
 # looks for the test subdirectory and runs the child CMakeLists
 add_subdirectory(test) 
+add_subdirectory(mainExecutable) 
+
+

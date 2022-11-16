@@ -1,19 +1,15 @@
 cmake_minimum_required(VERSION 3.8)
 
-set(This TestMovieRecommendations)
+set(This RunMovieRecommendations)
 
 set(Sources
-    test.cpp
+    ../src/main.cpp
 )
 
 add_executable(${This} ${Sources})
 target_link_libraries(${This} PUBLIC
-    gtest_main
     MovieRecommendations
 )
 
 
-add_test(
-    NAME ${This}
-    COMMAND ${This}
-)
+
