@@ -2,6 +2,7 @@
 #include<string>
 #include<fstream>
 #include<sstream>
+#include <cassert>
 
 #include "../include/DatasetAccessor.h"
 

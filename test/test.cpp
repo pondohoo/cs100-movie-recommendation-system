@@ -60,3 +60,49 @@ TEST(MoviesVectorSetupTests, TestNumMovies) {
 
 
 }
+
+TEST(RatingSortTest, sortfirst10MoviesByRating) {
+    Movies TestMovies1;
+    
+    for (int i = 0; i < 10; ++i) {
+        TestMovies1.recommendedMovies.push_back(TestMovies1.allMovies.at(i));
+    }
+
+    TestMovies1.SortRecommendedMoviesbyRating();
+    
+    EXPECT_EQ(TestMovies1.recommendedMovies.at(0).getName(), "Star Wars: Episode V - The Empire Strikes Back");
+    EXPECT_EQ(TestMovies1.recommendedMovies.at(1).getName(), "The Shining");
+    EXPECT_EQ(TestMovies1.recommendedMovies.at(2).getName(), "Raging Bull");
+    EXPECT_EQ(TestMovies1.recommendedMovies.at(3).getName(), "The Blues Brothers");
+    EXPECT_EQ(TestMovies1.recommendedMovies.at(4).getName(), "Airplane!");
+    EXPECT_EQ(TestMovies1.recommendedMovies.at(5).getName(), "Caddyshack");
+    EXPECT_EQ(TestMovies1.recommendedMovies.at(6).getName(), "The Long Riders");
+    EXPECT_EQ(TestMovies1.recommendedMovies.at(7).getName(), "Superman II");
+    EXPECT_EQ(TestMovies1.recommendedMovies.at(8).getName(), "Friday the 13th");
+    EXPECT_EQ(TestMovies1.recommendedMovies.at(9).getName(), "The Blue Lagoon");
+
+}
+
+TEST()
+
+TEST(RatingSortTest, findHighestRated) {
+    Movies TestMovies2;
+
+    TestMovies2.recommendedMovies = TestMovies2.allMovies;
+
+    TestMovies2.SortRecommendedMoviesbyRating();
+
+    for (int i = 0; i < 10; ++i) {
+        cout << TestMovies2.recommendedMovies.at(i).getName() << endl;
+        cout << TestMovies2.recommendedMovies.at(i).getGenre() << endl;
+        cout << TestMovies2.recommendedMovies.at(i).getDirector() << endl;
+        cout << TestMovies2.recommendedMovies.at(i).getStarringActor() << endl;
+        cout << TestMovies2.recommendedMovies.at(i).getRating() << endl;
+        cout << TestMovies2.recommendedMovies.at(i).getTotalVotes() << endl;
+        cout << TestMovies2.recommendedMovies.at(i).getReleaseYear() << endl;
+        cout << endl;
+    }
+
+    // EXPECT_EQ(TestMovies2.recommendedMovies.at(0).getName(), "The Shawshank Redemption");
+}
+

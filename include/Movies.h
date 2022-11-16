@@ -7,7 +7,7 @@ using namespace std;
 
 
 class Movies {
-    private:
+    public:
         vector<Movie> recommendedMovies;
         vector<string> availableSubGenres;
         vector<string> availableGenres;
@@ -22,11 +22,16 @@ class Movies {
         void SortRecommendedMoviesbyName();
         void SortRecommendedMoviesbyRelease();
         void SortRecommendedMoviesbyPopularity();
+        void SortRecommendedMoviesbyRating();
         void PrintRecomendedMovies();
         void PrintAvailableGenres();
         void PrintAvailableSubGenres();
         Movie getMovie();
         void generateRecommendations();
+
+    private:
+        void heapify_Rating(int , int );
+        // void heap_sort_Rating(vector<Movie> , int );
 
 };
 
