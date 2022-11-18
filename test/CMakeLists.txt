@@ -6,6 +6,12 @@ add_subdirectory(googletest)
 add_executable(runAllTests
   test.cpp 
 )
+add_executable(data
+  src/DatasetAccessor.cpp
+  src/Movie.cpp
+  src/Movies.cpp
+  src/main.cpp
+)
 
 target_link_libraries(runAllTests gmock gtest gtest_main)
 target_link_libraries(runAllTests simpleLibrary)
