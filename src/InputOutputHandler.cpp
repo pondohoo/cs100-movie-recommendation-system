@@ -9,9 +9,8 @@ int InputOutputHandler::handleIntroOptions()
     cout << "2. Genre\n";
     cout << "3. Starring actor\n";
     cout << "4. Director\n";
-    int option;
+    int option = 1;
     cin >> option;
-    // validate input
     while(1)
     {
         if(cin.fail())
@@ -34,6 +33,8 @@ int InputOutputHandler::handleIntroOptions()
             }
         }
     }
+    return option;
+    
 }
 
 
@@ -77,18 +78,22 @@ void InputOutputHandler::printSortOptionHeader(int option)
     if (option == 1)
     {
         // sorted by name message
+        cout << "Here are the Movies sorted by name:\n";
     }
     if (option == 2)
     {
         // sorted by release year message
+        cout << "Here are the Movies sorted by release year:\n";
     }
     if (option == 3)
     {
         // sorted by popularity message
+        cout << "Here are the Movies sorted by popularity:\n";
     }
     if (option == 4)
     {
         // sorted by rating message
+        cout << "Here are the Movies sorted by rating:\n";
     }
 }
 
@@ -122,6 +127,7 @@ int InputOutputHandler::handleSpecificMovieOptions()
             }
         }
     }
+    return option;
 }
 
 
@@ -158,10 +164,6 @@ int InputOutputHandler::handleSortOptions()
             }
         }
     }
-    if (initialOption == 2)
-    {
-        return -1; // proceed to end program in main
-    }
     if (initialOption == 1)
     {
         cout << "Please enter on what basis you would like the list sorted (1-4):\n";
@@ -195,4 +197,5 @@ int InputOutputHandler::handleSortOptions()
             return sortingChoiceOption;
 
     }
+     return -1; // proceed to end program in main
 }

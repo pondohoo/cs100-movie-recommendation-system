@@ -10,6 +10,11 @@ Movies::Movies()
 Movie Movies::getMovie(string movieName)
 {
     // search the allMovies for the movie name and return the object associated with that movie name
+
+
+    // if it's not found maybe you could create and return a Movie object with all
+    // string data members as "N/A" and int and double data members as 0 so we can validate it
+    // in main
 }
 
 void Movies::generateRecommendations(string basisName, int basis)
@@ -66,5 +71,5 @@ void Movies::generateRecommendationsDirector(string directorName)
 
 void Movies::PrintRecomendedMovies()
 {
-    
+
 }
