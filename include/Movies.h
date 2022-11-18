@@ -22,7 +22,13 @@ class Movies {
         void SortRecommendedMoviesbyPopularity();
         void PrintRecomendedMovies();
         Movie getMovie();
-        void generateRecommendations();
+
+        // if basis == 1, generates recommendations based on name
+        // if basis == 2, generates recommendations based on genre
+        // if basis == 3, generates recommendations based on starring actor
+        // if basis == 4, generates recommendatinos based on director
+        // if basis is anything else, does nothing
+        void generateRecommendations(string basisName, int basis);
 
 };
 
