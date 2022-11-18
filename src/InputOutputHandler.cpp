@@ -92,6 +92,38 @@ void InputOutputHandler::printSortOptionHeader(int option)
     }
 }
 
+int InputOutputHandler::handleSpecificMovieOptions()
+{
+    cout << "Would you like a recommendation based on that movie's:\n";
+    cout << "1. Genre\n";
+    cout << "2. Starring actor\n";
+    cout << "3. Director\n";
+    int option;
+    cin >> option;
+    while(1)
+    {
+        if(cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(),'\n');
+            cout << "Please enter a valid option" << endl;
+            cin >> option;
+        }
+        if(!cin.fail())
+        {
+            if (option > 0 && option < 4)
+            {
+                break;
+            }
+            else
+            {
+                cout << "Please enter a valid option" << endl;
+                cin >> option;
+            }
+        }
+    }
+}
+
 
 
 

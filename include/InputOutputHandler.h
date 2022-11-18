@@ -14,6 +14,7 @@ class InputOutputHandler {
         int handleSortOptions();
 
         void printRecommendedMoviesHeader();
+        int handleSpecificMovieOptions();
         void printEndMessage();
         void printSortOptionHeader(int option);
 
