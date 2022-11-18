@@ -8,49 +8,93 @@ Movies::Movies()
     allMovies = movieDataset.generateMoviesVector();
 }
 
-Movies::SortRecommendedMoviesbyName(std::vector<Movie> MoviesToReturn){
-    std::vector<std::string> names;
+
+
+void Movies::SortRecommendedMoviesbyName(std::vector<Movie> MoviesToReturn){
+    std::vector<std::string> name;
+    std::vector<int> index;
     for (int i=0;i<MoviesToReturn.size();i++){
-        names.push_back(MoviesToReturn[i].getName());
+        name.push_back(MoviesToReturn[i].getName());
     }
-    std::vector<std::string> sort_names=std::sort(names.begin(),names.end());
 
-    return sort_names;
+    bool mycomp(string a, string b){
+        return a<b;
+    }
 
+    std::sort(name.begin(),name.end(), mycomp);
+
+    for (int i=0; i<name.size(); i++){
+        for (int j=0; j<MoviesToReturn.size(); j++){
+            if (MoviesToReturn[j].getName()==name[i]){
+                index.push_back(j);
+            }
+        }
+    }
+    
+    std::vector<Movie> recommendedMovies ;
+    for (int i=0; i<name.size();i++){
+        recommendedMovies.push_back(MoviesToReturn[index[i]]);
+    }
+
+    this->recommendedMovies = recommendedMovies;
 }
 
-Movies::SortRecommendedMoviesbyRelease(std::vector<Movie> MoviesToReturn){
-    std::vector<int> releases;
-    std::vector<std::string> names;
+void Movies::SortRecommendedMoviesbyRelease(std::vector<Movie> MoviesToReturn){
+    std::vector<int> release;
+    std::vector<int> index;
     for (int i=0;i<MoviesToReturn.size();i++){
-        releases.push_back(MoviesToReturn[i].getReleaseYear());
-        names.push_back(MoviesToReturn[i].getName());
+        release.push_back(MoviesToReturn[i].getReleaseYear());
     }
-    std::vector<std::string> sort_releases=std::sort(releases.begin(),releases.end());
+    
+    bool mycomp(int a, int b){
+        return a<b;
+    }
 
+    std::sort(release.begin(),release.end() mycomp);
+   
+    for (int i=0; i<release.size(); i++){
+        for (int j=0; j<MoviesToReturn.size(); j++){
+            if (MoviesToReturn[j].getReleaseYear()==release[i]){
+                index.push_back(j);
+            }
+        }
+    }
+    
+    std::vector<Movie> recommendedMovies ;
+    for (int i=0; i<release.size();i++){
+        recommendedMovies.push_back(MoviesToReturn[index[i]]);
+    }
 
-    return sort_releases;
-
+    this->recommendedMovies = recommendedMovies;
 }
 
-Movies::SortRecommendedMoviesbyPopularity(std::vector<Movie> MoviesToReturn){
+ void Movies::SortRecommendedMoviesbyPopularity(std::vector<Movie> MoviesToReturn){
     std::vector<int> vote;
-    std::vector<std::string> names;
+    std::vector<int> index;
     for (int i=0;i<MoviesToReturn.size();i++){
         vote.push_back(MoviesToReturn[i].getTotalVotes());
-        names.push_back(MoviesToReturn[i].getName());
     }
-    std::vector<std::string> sort_releases=std::sort(releases.begin(),releases.end());
 
+    bool mycomp(int a, int b){
+        return a<b;
+    }
 
-    return sort_releases;
+    std::sort(vote.begin(),vote.end() mycomp);
+
+    for (int i=0; i<vote.size(); i++){
+        for (int j=0; j<MoviesToReturn.size(); j++){
+            if (MoviesToReturn[j].getTotalVotes()==vote[i]){
+                index.push_back(j);
+            }
+        }
+    }
+    
+    std::vector<Movie> recommendedMovies ;
+    for (int i=0; i<vote.size();i++){
+        recommendedMovies.push_back(MoviesToReturn[index[i]]);
+    }
+
+    this->recommendedMovies = recommendedMovies;
 }
 
 
-Movies::SortRecommendedMoviebyRating(std::vector<Movie> MoviesToReturn){
-    std::vector<int> ratings;
-    std::vector<std::string> names;
-    for (int i=0;i<MoviesToReturn.size();i++){
-        ratings.push_back(MoviesToReturn[i].getRating());
-        names.push_back(MoviesToReturn[i].getName());
-}
