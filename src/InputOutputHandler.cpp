@@ -40,10 +40,14 @@ int InputOutputHandler::handleIntroOptions()
 
 string InputOutputHandler::handleNameRecommendationOption(Movies& movieRecommendationInterface)
 {
+    // this is just until function is implemented, so it will fail if it is called
+    assert(0==1);
     // returns the name the user chose for recommendation
 }
 string InputOutputHandler::handleGenreRecommendationOption(Movies& movieRecommendationInterface)
 {
+    // this is just until function is implemented, so it will fail if it is called
+    assert(0==1);
     // displays genres available for selection:
     // Drama, Adventure, Action, Comedy, Horror, Biography, Crime, Western, Fantasy, Animation, Thriller, Romance, Mystery, 
     // Sci-Fi, Sport, Musical
@@ -55,10 +59,14 @@ string InputOutputHandler::handleGenreRecommendationOption(Movies& movieRecommen
 }
 string InputOutputHandler::handleActorRecommendationOption(Movies& movieRecommendationInterface)
 {
+    // this is just until function is implemented, so it will fail if it is called
+    assert(0==1);
     // returns the actor the user chose for recommendation
 }
 string InputOutputHandler::handleDirectorRecommendationOption(Movies& movieRecommendationInterface)
 {
+    // this is just until function is implemented, so it will fail if it is called
+    assert(0==1);
     // returns the director the user chose for recommendation
 }
 
