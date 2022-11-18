@@ -7,7 +7,7 @@ using namespace std;
 
 
 class Movies {
-    public:
+    private:
         vector<Movie> recommendedMovies;
         vector<string> availableSubGenres;
         vector<string> availableGenres;
@@ -26,8 +26,10 @@ class Movies {
         void PrintRecomendedMovies();
         void PrintAvailableGenres();
         void PrintAvailableSubGenres();
-        Movie getMovie();
+        Movie getMovieTestingOnly(int );
         void generateRecommendations();
+        void testPushBackforTestingOnly(Movie );
+        Movie getallMoviesmovieForTestingOnly(int i);
 
     private:
         void heapify_Rating(int , int );

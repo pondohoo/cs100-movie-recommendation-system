@@ -44,3 +44,15 @@ void Movies::heapify_Rating(int n, int i) {
         heapify_Rating(n, smallest);
     }
 }
+
+void Movies::testPushBackforTestingOnly(Movie reccMovie) {
+    recommendedMovies.push_back(reccMovie);
+}
+
+Movie Movies::getallMoviesmovieForTestingOnly(int i) {
+    return allMovies.at(i);
+}
+
+Movie Movies::getMovieTestingOnly(int i) {
+    return recommendedMovies.at(i);
+}
