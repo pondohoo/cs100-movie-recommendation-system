@@ -98,3 +98,10 @@ void Movies::SortRecommendedMoviesbyRelease(std::vector<Movie> MoviesToReturn){
 }
 
 
+void Movies::PrintRecomendedMovies(){
+    for(int i=0;i<(this->recommendedMovies).size(),i++){
+        std::cout<<(this->recommendedMovies)[i]<<'\n';
+    }
+}
+
+
