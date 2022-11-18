@@ -30,20 +30,28 @@ int main() {
         
         
         // generate recommendations based on name
+        movieRecommendationInterface.generateRecommendations(movieName, option);
+
+
     }
     else if (option == 2)
     {
         genreName = iohandler.handleGenreRecommendationOption(movieRecommendationInterface);
         
-        
         // generate recommendations based on genre
+        movieRecommendationInterface.generateRecommendations(genreName, option);
+        
+
+        
     }
     else if (option == 3)
     {
         actorName = iohandler.handleActorRecommendationOption(movieRecommendationInterface);
        
+       // generate recommendations based on actor
+       movieRecommendationInterface.generateRecommendations(actorName, option);
        
-        // generate recommendations based on actor
+        
     }
     else if (option == 4)
     {
@@ -51,7 +59,52 @@ int main() {
         
         
         // generate recommendations based on director
+        movieRecommendationInterface.generateRecommendations(directorName, option);
     }
+
+    // print recommended movie subset
+    iohandler.printRecommendedMoviesHeader();
+    movieRecommendationInterface.PrintRecomendedMovies();
+
+
+    // User is given the option to sort the recommended movies by
+    // 1. name
+    // 2. release year
+    // 3. popularity
+    // 4. rating
+
+    int sortOption = iohandler.handleSortOptions();
+    if (sortOption == -1)
+    {
+        iohandler.printEndMessage();
+    }
+    else if (sortOption == 1)
+    {
+        iohandler.printSortOptionHeader(sortOption);
+        // sort list by name
+        // print list
+    }
+    else if (sortOption == 2)
+    {
+        iohandler.printSortOptionHeader(sortOption);
+        // sort list by release year
+        // print list
+    }
+    else if (sortOption == 3)
+    {
+        iohandler.printSortOptionHeader(sortOption);
+        // sort list by popularity
+        // print list
+    }
+    else if (sortOption == 4)
+    {
+        iohandler.printSortOptionHeader(sortOption);
+        // sort list by rating
+        // print list
+    }
+
+
+
 
     return 0;
 }
