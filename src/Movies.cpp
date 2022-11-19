@@ -8,6 +8,8 @@ Movies::Movies()
     allMovies = movieDataset.generateMoviesVector();
 }
 
+// utilize the heap sort algorithm to sort the recommendedMovies vector by rating from greatest to least
+
 void Movies::SortRecommendedMoviesbyRating() {
     for (int i = this->recommendedMovies.size() / 2 - 1; i >= 0; i--) {
         heapify_Rating(this->recommendedMovies.size(), i);
@@ -22,6 +24,9 @@ void Movies::SortRecommendedMoviesbyRating() {
         heapify_Rating(i, 0);
     }
 }
+
+// helper function that is called by ratingsort function
+// swaps the least to the top of the vector with heap property
 
 void Movies::heapify_Rating(int n, int i) {
     int smallest = i; // Initialize smallest as root
@@ -44,6 +49,11 @@ void Movies::heapify_Rating(int n, int i) {
         heapify_Rating(n, smallest);
     }
 }
+
+// functions only used in unit tests to 
+//      -push directly to the reccommendedMovies vector,
+//      -get a movie from allmovies to push into reccommendMovies
+//      -get a movie from reccommendedMovies
 
 void Movies::testPushBackforTestingOnly(Movie reccMovie) {
     recommendedMovies.push_back(reccMovie);
