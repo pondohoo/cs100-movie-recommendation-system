@@ -9,6 +9,8 @@ using namespace std;
 class Movies {
     private:
         vector<Movie> recommendedMovies;
+        vector<string> availableSubGenres;
+        vector<string> availableGenres;
         vector<Movie> allMovies;
 
     public:
@@ -17,12 +19,18 @@ class Movies {
         Movies();
 
 
+        void SortRecommendedMoviebyRating();
         void SortRecommendedMoviesbyName();
         void SortRecommendedMoviesbyRelease();
         void SortRecommendedMoviesbyPopularity();
+
+        //use the vector<Movie> Recommended
         void PrintRecomendedMovies();
+        void PrintAvailableGenres();
+        void PrintAvailableSubGenres();
         Movie getMovie();
         void generateRecommendations();
+        void generateRecommendationsDirector(string directorName);
 
 };
 

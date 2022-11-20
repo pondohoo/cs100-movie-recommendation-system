@@ -83,3 +83,24 @@ TEST(MoviesVectorSetupTests, TestNumMovies) {
 
 }
 
+
+
+TEST(testGenerateRecommendedMoviesDirector,test1){
+    string directorName="Irvin Kershner";
+    DatasetAccessor movieDataset;
+    vector <Movie> allMovies = movieDataset.generateMoviesVector();
+    vector<Movie> generatedMovieVectorDirector = allMovies.generateRecommendationsDirector(directorName);
+
+    EXPECT_EQ(generatedMovieVectorDirector.size(),3);
+    EXPECT_EQ(generatedMovieVectorDirector[0].getDirector(),"Irvin Kershner");
+}
+
+TEST(testGenerateRecommendedMoviesDirector,test2){
+    string directorName="Stanley Kubrick";
+    DatasetAccessor movieDataset;
+    vector <Movie> allMovies = movieDataset.generateMoviesVector();
+    vector<Movie> generatedMovieVectorDirector = allMovies.generateRecommendationsDirector(directorName);
+
+    EXPECT_EQ(generatedMovieVectorDirector.size(),3);
+    EXPECT_EQ(generatedMovieVectorDirector[0].getDirector(),"Stanley Kubrick");
+}
