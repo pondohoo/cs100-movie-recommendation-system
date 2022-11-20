@@ -9,7 +9,6 @@ Movies::Movies()
 }
 
 // utilize the heap sort algorithm to sort the recommendedMovies vector by rating from greatest to least
-
 void Movies::SortRecommendedMoviesbyRating() {
     for (int i = this->recommendedMovies.size() / 2 - 1; i >= 0; i--) {
         heapify_Rating(this->recommendedMovies.size(), i);
@@ -65,4 +64,86 @@ Movie Movies::getallMoviesmovieForTestingOnly(int i) {
 
 Movie Movies::getMovieTestingOnly(int i) {
     return recommendedMovies.at(i);
+}
+
+Movie Movies::getMovie(string movieName)
+{
+    // this is just until function is implemented, so it will fail if it is called
+    assert(0==1);
+
+    // search the allMovies for the movie name and return the object associated with that movie name
+
+
+    // if it's not found maybe you could create and return a Movie object with all
+    // string data members as "N/A" and int and double data members as 0 so we can validate it
+    // in main
+}
+
+void Movies::generateRecommendations(string basisName, int basis)
+{
+    // recommend by genre
+    if (basis == 1)
+    {
+        // compare genre (stored in basisName) with genre from every movie in allMovies
+        // if the genre (stored in basisName) is the current movie genre, add the movie to recommendedMovies
+        generateRecommendationsGenre(basisName);
+    
+    }
+    // recommend by actor
+    else if (basis == 2)
+    {
+        // compare actor (stored in basisName) with leadingActor from every movie in allMovies
+        // if the actor (sotred in basisName) is the current movie leadingActor, add the movie to recommendedMovies
+        generateRecommendationsActor(basisName);
+    
+    
+    
+    }
+    // recommend by director
+    else if (basis == 3)
+    {
+        // compare director (stored in basisName) with director from every movie in allMovies
+        // if the director (stored in basisName) is the current movie director, add the movie to recommendedMovies
+        generateRecommendationsDirector(basisName);
+
+    
+    
+    }
+}
+
+void Movies::generateRecommendationsGenre(string genreName)
+{
+    // this is just until function is implemented, so it will fail if it is called
+    assert(0==1);
+
+
+    // search through allMovies for all Movie objects that have the genre given by the parameter genreName
+    // if there is a Movie object with that genre, add it to recommendedMovies 
+}
+
+
+void Movies::generateRecommendationsActor(string actorName)
+{
+    // this is just until function is implemented, so it will fail if it is called
+    assert(0==1);
+
+    // search through allMovies for all Movie objects that have the actor given by the parameter actorName
+    // if there is a Movie object with that actor, add it to recommendedMovies 
+}
+
+
+void Movies::generateRecommendationsDirector(string directorName)
+{
+    // this is just until function is implemented, so it will fail if it is called
+    assert(0==1);
+
+    // search through allMovies for all Movie objects that have the director given by the parameter directorName
+    // if there is a Movie object with that director, add it to recommendedMovies 
+}
+
+void Movies::PrintRecomendedMovies()
+{
+    // this is just until function is implemented, so it will fail if it is called
+    assert(0==1);
+
 }

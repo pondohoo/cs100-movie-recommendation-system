@@ -144,4 +144,3 @@ TEST(RatingSortTest, findLowestRated) {
     EXPECT_EQ(TestMovies3.getMovieTestingOnly(7667).getName(), "Love by Drowning");
 
 }
-
