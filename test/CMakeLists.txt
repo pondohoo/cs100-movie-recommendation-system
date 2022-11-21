@@ -6,10 +6,10 @@ set(Sources
     test.cpp
 )
 add_executable(data
-  src/DatasetAccessor.cpp
-  src/Movie.cpp
-  src/Movies.cpp
-  src/main.cpp
+  ../src/DatasetAccessor.cpp
+  ../src/Movie.cpp
+  ../src/Movies.cpp
+  ../src/main.cpp
 )
 
 

@@ -144,3 +144,53 @@ TEST(RatingSortTest, findLowestRated) {
     EXPECT_EQ(TestMovies3.getMovieTestingOnly(7667).getName(), "Love by Drowning");
 
 }
+
+TEST(GetMovieTests, MovieIsIn) {
+    Movies TestMovies1;
+
+    string testName1 = "The Lego Ninjago Movie";
+    Movie testMovie1("The Lego Ninjago Movie", "Animation", "Charlie Bean", "Jackie Chan", 6.0, 24000.0, 2017);
+
+    EXPECT_EQ(TestMovies1.getMovie(testName1).getName(), testMovie1.getName());
+    EXPECT_EQ(TestMovies1.getMovie(testName1).getGenre(), testMovie1.getGenre());
+    EXPECT_EQ(TestMovies1.getMovie(testName1).getDirector(), testMovie1.getDirector());
+    EXPECT_EQ(TestMovies1.getMovie(testName1).getStarringActor(), testMovie1.getStarringActor());
+    EXPECT_EQ(TestMovies1.getMovie(testName1).getRating(), testMovie1.getRating());
+    EXPECT_EQ(TestMovies1.getMovie(testName1).getTotalVotes(), testMovie1.getTotalVotes());
+    EXPECT_EQ(TestMovies1.getMovie(testName1).getReleaseYear(), testMovie1.getReleaseYear());
+}
+
+TEST(GetMovieTests, MovieIsIn2) {
+    Movies TestMovies2;
+
+    string testName2 = "Immediate Family";
+    Movie testMovie2("Immediate Family", "Drama", "Jonathan Kaplan", "Glenn Close", 6.0, 1500.0, 1989);
+
+    EXPECT_EQ(TestMovies2.getMovie(testName2).getName(), testMovie2.getName());
+    EXPECT_EQ(TestMovies2.getMovie(testName2).getGenre(), testMovie2.getGenre());
+    EXPECT_EQ(TestMovies2.getMovie(testName2).getDirector(), testMovie2.getDirector());
+    EXPECT_EQ(TestMovies2.getMovie(testName2).getStarringActor(), testMovie2.getStarringActor());
+    EXPECT_EQ(TestMovies2.getMovie(testName2).getRating(), testMovie2.getRating());
+    EXPECT_EQ(TestMovies2.getMovie(testName2).getTotalVotes(), testMovie2.getTotalVotes());
+    EXPECT_EQ(TestMovies2.getMovie(testName2).getReleaseYear(), testMovie2.getReleaseYear());
+}
+
+TEST(GetMovieTests, MovieIsNotIn) {
+    Movies TestMovies3;
+
+    string testName3 = "Free Guy";
+    Movie testMovie3("Free Guy", "Sci-Fi", "Shawn Levy", "Ryan Reynolds", 7.1, 15000.0, 2021);
+
+    EXPECT_NE(TestMovies3.getMovie(testName3).getName(), testMovie3.getName());
+    EXPECT_NE(TestMovies3.getMovie(testName3).getGenre(), testMovie3.getGenre());
+    EXPECT_NE(TestMovies3.getMovie(testName3).getDirector(), testMovie3.getDirector());
+    EXPECT_NE(TestMovies3.getMovie(testName3).getStarringActor(), testMovie3.getStarringActor());
+    EXPECT_NE(TestMovies3.getMovie(testName3).getRating(), testMovie3.getRating());
+    EXPECT_NE(TestMovies3.getMovie(testName3).getTotalVotes(), testMovie3.getTotalVotes());
+    EXPECT_NE(TestMovies3.getMovie(testName3).getReleaseYear(), testMovie3.getReleaseYear());
+}
+
+int main(int argc, char **argv) {
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
+}
