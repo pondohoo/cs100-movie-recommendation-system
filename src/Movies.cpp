@@ -157,16 +157,6 @@ void Movies::generateRecommendationsActor(string actorName)
     // if there is a Movie object with that actor, add it to recommendedMovies 
 }
 
-
-void Movies::generateRecommendationsDirector(string directorName)
-{
-    // this is just until function is implemented, so it will fail if it is called
-    // assert(0==1);
-
-    // search through allMovies for all Movie objects that have the director given by the parameter directorName
-    // if there is a Movie object with that director, add it to recommendedMovies 
-}
-
 void Movies::PrintRecomendedMovies()
 {
     // this is just until function is implemented, so it will fail if it is called
