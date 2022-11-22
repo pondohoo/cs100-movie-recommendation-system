@@ -36,16 +36,9 @@ class Movies {
         void testPushBackforTestingOnly(Movie );
         Movie getallMoviesmovieForTestingOnly(int i);
 
-
-    private:
-        // helper function that is called by ratingsort function
-        // swaps the least to the top of the vector with heap property
-        void heapify_Rating(int , int );
-
+        
         // get a Movie object from allMovies based on name
         Movie getMovie(string movieName);
-
-
 
         // if basis == 1, generates recommendations based on name
         // if basis == 2, generates recommendations based on genre
@@ -56,6 +49,10 @@ class Movies {
 
     private:
         // helper functions
+
+        // helper function that is called by ratingsort function
+        // swaps the least to the top of the vector with heap property
+        void heapify_Rating(int , int );
 
         // called from generateRecommendations, initializes recommendedMovies list based
         // on genre parameter
