@@ -66,6 +66,10 @@ Movie Movies::getMovieTestingOnly(int i) {
     return recommendedMovies.at(i);
 }
 
+int Movies::sizeofRecommendedForTestingOnly() {
+    return recommendedMovies.size();
+}
+
 Movie Movies::getMovie(string movieName)
 {
     // this is just until function is implemented, so it will fail if it is called
@@ -135,6 +139,12 @@ void Movies::generateRecommendationsGenre(string genreName)
 
     // search through allMovies for all Movie objects that have the genre given by the parameter genreName
     // if there is a Movie object with that genre, add it to recommendedMovies 
+
+    for (int i = 0; i < allMovies.size(); ++i) {
+        if (allMovies.at(i).getGenre() == genreName) {
+            recommendedMovies.push_back(allMovies.at(i));
+        }
+    }
 }
 
 
