@@ -35,7 +35,7 @@ class Movies {
         Movie getMovieTestingOnly(int );
         void testPushBackforTestingOnly(Movie );
         Movie getallMoviesmovieForTestingOnly(int i);
-
+        int sizeofRecommendedForTestingOnly();
         
         // get a Movie object from allMovies based on name
         Movie getMovie(string movieName);
