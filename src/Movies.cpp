@@ -69,14 +69,30 @@ Movie Movies::getMovieTestingOnly(int i) {
 Movie Movies::getMovie(string movieName)
 {
     // this is just until function is implemented, so it will fail if it is called
-    assert(0==1);
+    // assert(0==1);
 
     // search the allMovies for the movie name and return the object associated with that movie name
-
+    for (int i = 0; i < allMovies.size(); ++i) {
+        if (allMovies.at(i).getName() == movieName) {
+            return allMovies.at(i);
+        }
+    }
 
     // if it's not found maybe you could create and return a Movie object with all
     // string data members as "N/A" and int and double data members as 0 so we can validate it
     // in main
+
+    string name = "N/A";
+    string genre = "N/A";
+    string director = "N/A";
+    string star = "N/A";
+    double rating = 0.0;
+    int votes = 0;
+    int year = 0;
+
+    Movie nullMovie(name, genre, director, star, rating, votes, year);
+
+    return nullMovie;
 }
 
 void Movies::generateRecommendations(string basisName, int basis)
@@ -114,7 +130,7 @@ void Movies::generateRecommendations(string basisName, int basis)
 void Movies::generateRecommendationsGenre(string genreName)
 {
     // this is just until function is implemented, so it will fail if it is called
-    assert(0==1);
+    // assert(0==1);
 
 
     // search through allMovies for all Movie objects that have the genre given by the parameter genreName
@@ -125,7 +141,7 @@ void Movies::generateRecommendationsGenre(string genreName)
 void Movies::generateRecommendationsActor(string actorName)
 {
     // this is just until function is implemented, so it will fail if it is called
-    assert(0==1);
+    // assert(0==1);
 
     // search through allMovies for all Movie objects that have the actor given by the parameter actorName
     // if there is a Movie object with that actor, add it to recommendedMovies 
@@ -135,7 +151,7 @@ void Movies::generateRecommendationsActor(string actorName)
 void Movies::generateRecommendationsDirector(string directorName)
 {
     // this is just until function is implemented, so it will fail if it is called
-    assert(0==1);
+    // assert(0==1);
 
     // search through allMovies for all Movie objects that have the director given by the parameter directorName
     // if there is a Movie object with that director, add it to recommendedMovies 
@@ -144,6 +160,6 @@ void Movies::generateRecommendationsDirector(string directorName)
 void Movies::PrintRecomendedMovies()
 {
     // this is just until function is implemented, so it will fail if it is called
-    assert(0==1);
+    // assert(0==1);
 
 }
