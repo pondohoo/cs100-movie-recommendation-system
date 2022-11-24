@@ -16,7 +16,6 @@ class Movies {
         // initialize vector<Movie> allMovies to that vector
         Movies();
 
-
         void SortRecommendedMoviesbyName();
         void SortRecommendedMoviesbyRelease();
         void SortRecommendedMoviesbyPopularity();
@@ -26,16 +25,6 @@ class Movies {
         void PrintAvailableGenres();
         void PrintAvailableSubGenres();
         void generateRecommendations();
-        
-        // functions only used in unit tests to 
-        //      -push directly to the reccommendedMovies vector,
-        //      -get a movie from allmovies to push into reccommendMovies
-        //      -get a movie from reccommendedMovies
-
-        Movie getMovieTestingOnly(int );
-        void testPushBackforTestingOnly(Movie );
-        Movie getallMoviesmovieForTestingOnly(int i);
-        int sizeofRecommendedForTestingOnly();
         
         // get a Movie object from allMovies based on name
         Movie getMovie(string movieName);
@@ -65,6 +54,17 @@ class Movies {
         // called from generateRecommendations, initializes recommendedMovies list based
         // on director parameter
         void generateRecommendationsDirector(string directorName);
+
+    public:
+        // functions only used in unit tests to 
+        //      -get a movie from reccommendedMovies
+        //      -push directly to the reccommendedMovies vector,
+        //      -get a movie from allMovies vector
+        //      -get size of recommendedMovies vector
+        Movie getMovieTestingOnly(int );
+        void testPushBackforTestingOnly(Movie );
+        Movie getallMoviesmovieForTestingOnly(int i);
+        int sizeofRecommendedForTestingOnly();
 
 };
 

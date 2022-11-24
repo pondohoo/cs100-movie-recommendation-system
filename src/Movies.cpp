@@ -50,9 +50,10 @@ void Movies::heapify_Rating(int n, int i) {
 }
 
 // functions only used in unit tests to 
+//      -get a movie from allMovies vector
 //      -push directly to the reccommendedMovies vector,
-//      -get a movie from allmovies to push into reccommendMovies
 //      -get a movie from reccommendedMovies
+//      -get size of recommendedMovies vector
 
 void Movies::testPushBackforTestingOnly(Movie reccMovie) {
     recommendedMovies.push_back(reccMovie);
