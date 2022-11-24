@@ -50,3 +50,27 @@ Movies class: The primary interface for performing the operations of the program
 Movie class: Objects of the Movie class store information for each movie parsed from the movie dataset. Information it stores in member variables include: name, genre, director, starring actor, rating, total votes, and release year. Also allows access to each of these through getter functions.
 
 DatasetAccessor class: All of the work for accessing and parsing through the movies.csv dataset file is directed to this class. Through generateMoviesVector(), creates vector<Movie> allMovies for the Movies class.
+
+
+### InputOutput class 
+Handles all of the input and output for the main function.
+handleIntroOptions
+
+
+
+## Phase IV - Final Deliverable
+
+### Installation/usage instructions for the application (including dependencies and screenshots)
+
+### How to install
+1. Download the latest release of the Movie Recommender
+2. Compile the files by running `$ cmake .` and `$ make`
+3. Run ./mainExecutable/RunMovieRecommendations to start the program
+
+### How to use
+1. Enter a basis on which to be recommended
+<img width="542" alt="image" src="https://user-images.githubusercontent.com/90938120/203689983-f2a2da29-76f2-43a7-b9f9-9d62a72d43dc.png">
+
+### Testing/validation procedure
+
+
