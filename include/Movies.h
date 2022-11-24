@@ -23,7 +23,11 @@ class Movies {
         void SortRecommendedMoviesbyName(vector<Movie> MoviesToReturn);
         void SortRecommendedMoviesbyRelease(vector<Movie> MoviesToReturn);
         void SortRecommendedMoviesbyPopularity(vector<Movie> MoviesToReturn);
-        void PrintRecomendedMovies();
+
+        // prints 10 movies max for every page
+        // returns number of movies printed (for testing)
+        // starts with page 0
+        int PrintRecommendedMovies(int pageNumber);
         void PrintAvailableGenres();
         void PrintAvailableSubGenres();
         Movie getMovie();
