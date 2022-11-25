@@ -105,7 +105,8 @@ int main() {
     }
     // print recommended movie subset
     iohandler.printRecommendedMoviesHeader();
-    movieRecommendationInterface.PrintRecomendedMovies();
+    movieRecommendationInterface.PrintRecommendedMovies(0);
+    iohandler.handleRecommendedMoviesNextPage(movieRecommendationInterface);
 
 
 
@@ -135,7 +136,7 @@ int main() {
         //movieRecommendationInterface.SortRecommendedMoviesbyName();
 
         // call print recommended list function on movieRecommendationInterface
-        movieRecommendationInterface.PrintRecomendedMovies();
+        movieRecommendationInterface.PrintRecommendedMovies(0);
     }
     else if (sortOption == 2)
     {
@@ -145,7 +146,7 @@ int main() {
 
 
         // call print recommended list function on movieRecommendationInterface
-        movieRecommendationInterface.PrintRecomendedMovies();
+        movieRecommendationInterface.PrintRecommendedMovies(0);
     }
     else if (sortOption == 3)
     {
@@ -155,7 +156,7 @@ int main() {
 
         
         // call print recommended list function on movieRecommendationInterface
-        movieRecommendationInterface.PrintRecomendedMovies();
+        movieRecommendationInterface.PrintRecommendedMovies(0);
     }
     else if (sortOption == 4)
     {
@@ -164,7 +165,7 @@ int main() {
         //movieRecommendationInterface.SortRecommendedMoviesbyRating();
         
         // call print recommended list function on movieRecommendationInterface
-        movieRecommendationInterface.PrintRecomendedMovies();
+        movieRecommendationInterface.PrintRecommendedMovies(0);
     }
     iohandler.printEndMessage();
 

@@ -22,6 +22,7 @@ class InputOutputHandler {
         string handleGenreRecommendationOption(Movies& movieRecommendationInterface);
         string handleActorRecommendationOption(Movies& movieRecommendationInterface);
         string handleDirectorRecommendationOption(Movies& movieRecommendationInterface);
+        void handleRecommendedMoviesNextPage(Movies& movieRecommendationInterface);
         
 
 
