@@ -274,9 +274,9 @@ TEST(PrintRecommendedMoviesTests, NoMoviesFound) {
     }
     EXPECT_EQ(TestMovies.PrintRecommendedMovies(5), 0);
 }
-TEST(PrintRecommendedMoviesTests, FullPageMovies) {
+TEST(PrintRecommendedMoviesTests, FullPage10Movies) {
     Movies TestMovies;
-    for (int i = 0; i < 10; ++i) {
+    for (int i = 0; i < 100; ++i) {
         TestMovies.testPushBackforTestingOnly(TestMovies.getallMoviesmovieForTestingOnly(i));
     }
     EXPECT_EQ(TestMovies.PrintRecommendedMovies(0), 10);
