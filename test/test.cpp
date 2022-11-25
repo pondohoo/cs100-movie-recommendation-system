@@ -266,3 +266,25 @@ int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
 }
+
+TEST(PrintRecommendedMoviesTests, NoMoviesFound) {
+    Movies TestMovies;
+    for (int i = 0; i < 10; ++i) {
+        TestMovies.testPushBackforTestingOnly(TestMovies.getallMoviesmovieForTestingOnly(i));
+    }
+    EXPECT_EQ(TestMovies.PrintRecommendedMovies(5), 0);
+}
+TEST(PrintRecommendedMoviesTests, FullPage10Movies) {
+    Movies TestMovies;
+    for (int i = 0; i < 100; ++i) {
+        TestMovies.testPushBackforTestingOnly(TestMovies.getallMoviesmovieForTestingOnly(i));
+    }
+    EXPECT_EQ(TestMovies.PrintRecommendedMovies(0), 10);
+}
+TEST(PrintRecommendedMoviesTests, NotFullPageMovies) {
+    Movies TestMovies;
+    for (int i = 0; i < 5; ++i) {
+        TestMovies.testPushBackforTestingOnly(TestMovies.getallMoviesmovieForTestingOnly(i));
+    }
+    EXPECT_EQ(TestMovies.PrintRecommendedMovies(0), 5);
+}

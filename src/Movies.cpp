@@ -1,12 +1,41 @@
 #include "../include/Movies.h"
 #include "../include/DatasetAccessor.h"
+#include "../include/Movie.h"
+#include <iostream>
+
 #include <algorithm>
+
 
 Movies::Movies()
 {
     DatasetAccessor movieDataset;
     allMovies = movieDataset.generateMoviesVector();
 }
+
+
+int Movies::PrintRecommendedMovies(int pageNumber){
+    int movieCounter = 0;
+    bool atLeastOneMovie = false;
+    // pageNumber == 0-> items 0->10
+    // pageNumber == 1-> items 10->20
+    // pageNumber == 5-> items 50->60
+    cout << endl;
+    int i = pageNumber*10;
+    int endi = i+10;
+    for(int i = pageNumber*10;i<endi&&i<this->recommendedMovies.size();i++) {
+        ++movieCounter;
+        atLeastOneMovie = true;
+        cout<<this->recommendedMovies.at(i).getName()<<'\n';
+    }
+    if (!atLeastOneMovie)
+    {
+        cout << "No movies found!" << endl;
+    }
+    cout << endl;
+    return movieCounter;
+}
+
+
 
 // utilize the heap sort algorithm to sort the recommendedMovies vector by rating from greatest to least
 void Movies::SortRecommendedMoviesbyRating() {
@@ -165,11 +194,4 @@ void Movies::generateRecommendationsDirector(string directorName)
 
     // search through allMovies for all Movie objects that have the director given by the parameter directorName
     // if there is a Movie object with that director, add it to recommendedMovies 
-}
-
-void Movies::PrintRecomendedMovies()
-{
-    // this is just until function is implemented, so it will fail if it is called
-    // assert(0==1);
-
 }

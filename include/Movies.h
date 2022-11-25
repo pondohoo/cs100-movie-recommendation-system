@@ -17,12 +17,17 @@ class Movies {
         Movies();
 
 
+
+        // prints 10 movies max for every page
+        // returns number of movies printed (for testing)
+        // starts with page 0
+        int PrintRecommendedMovies(int pageNumber);
+
         void SortRecommendedMoviesbyName();
         void SortRecommendedMoviesbyRelease();
         void SortRecommendedMoviesbyPopularity();
         // utilize the heap sort algorithm to sort the recommendedMovies vector by rating from greatest to least
         void SortRecommendedMoviesbyRating();
-        void PrintRecomendedMovies();
         void PrintAvailableGenres();
         void PrintAvailableSubGenres();
         void generateRecommendations();
