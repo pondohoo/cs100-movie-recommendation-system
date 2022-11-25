@@ -19,6 +19,7 @@ int Movies::PrintRecommendedMovies(int pageNumber){
     // pageNumber == 0-> items 0->10
     // pageNumber == 1-> items 10->20
     // pageNumber == 5-> items 50->60
+    cout << endl;
     for(int i = pageNumber*10;i<i+10&&i<this->recommendedMovies.size();i++) {
         ++movieCounter;
         atLeastOneMovie = true;
@@ -26,7 +27,7 @@ int Movies::PrintRecommendedMovies(int pageNumber){
     }
     if (!atLeastOneMovie)
     {
-        cout << "No movies found!";
+        cout << "No movies found!" << endl;
     }
     return movieCounter;
 }

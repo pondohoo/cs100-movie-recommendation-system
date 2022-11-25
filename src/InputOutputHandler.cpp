@@ -77,6 +77,49 @@ void InputOutputHandler::printRecommendedMoviesHeader()
 {
     cout << "Here is a list of movies you might like:" << endl;
 }
+void InputOutputHandler::handleRecommendedMoviesNextPage(Movies& movieRecommendationInterface)
+{
+    cout << "Enter 1 to see the next page of recommendations" << endl;
+    cout << "Enter 0 to see sorting options" << endl;
+    int option = 1;
+    int currPage = 1;
+    while (option == 1)
+    {
+        cin >> option;
+        while(1)
+        {
+            if(cin.fail())
+            {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                cout << "Please enter a valid option" << endl;
+                cin >> option;
+            }
+            if(!cin.fail())
+            {
+                if (option == 0 || option == 1)
+                {
+                    break;
+                }
+                else
+                {
+                    cout << "Please enter a valid option" << endl;
+                    cin >> option;
+                }
+            }
+        }
+        if (option == 0)
+        {
+            break;
+        }
+        movieRecommendationInterface.PrintRecommendedMovies(currPage);
+        currPage += 1;
+    }
+
+}
+
+
+
 void InputOutputHandler::printEndMessage()
 {
     cout << "Thank you for using the Movie Recommender!" << endl;
