@@ -53,6 +53,114 @@ void Movies::SortRecommendedMoviesbyRating() {
     }
 }
 
+//Release
+void Movies::SortRecommendedMoviesbyRelease() {
+    for (int i = this->recommendedMovies.size() / 2 - 1; i >= 0; i--) {
+        heapify_Release(this->recommendedMovies.size(), i);
+    }
+
+    // One by one extract an element from heap
+    for (int i = this->recommendedMovies.size() - 1; i >= 0; i--) {
+        // Move current root to end
+        swap(this->recommendedMovies[0], this->recommendedMovies[i]);
+ 
+        // call max heapify on the reduced heap
+        heapify_Release(i, 0);
+    }
+}
+
+//Name
+void Movies::SortRecommendedMoviesbyName(){
+    vector<string> name;
+    vector<int> index;
+    for (int i=0; i<this->recommendedMovies.size(); i++){
+        name.push_back(recommendedMovies[i].getName());
+        index.push_back(i);
+    }
+
+    sort(name.begin(),name.end());
+
+    for (int i=0; i<name.size();i++){
+        for (int j=0; j<this->recommendedMovies.size(); i++){
+            if(name[i]==this->recommendedMovies[j].getName()){
+                index.push_back(j);
+            }
+        }
+        
+    }
+
+    for (int i=0; i<this->recommendedMovies.size();i++){
+        this->recommendedMovies[i]=this->recommendedMovies[index[i]];
+    }
+
+
+
+
+
+}
+
+
+//Popularity
+void Movies::SortRecommendedMoviesbyPopularity() {
+    for (int i = this->recommendedMovies.size() / 2 - 1; i >= 0; i--) {
+        heapify_Popularity(this->recommendedMovies.size(), i);
+    }
+
+    // One by one extract an element from heap
+    for (int i = this->recommendedMovies.size() - 1; i >= 0; i--) {
+        // Move current root to end
+        swap(this->recommendedMovies[0], this->recommendedMovies[i]);
+ 
+        // call max heapify on the reduced heap
+        heapify_Popularity(i, 0);
+    }
+}
+
+
+
+void Movies::heapify_Release(int n, int i) {
+    int smallest = i; // Initialize smallest as root
+    int l = 2 * i + 1; // left = 2*i + 1
+    int r = 2 * i + 2; // right = 2*i + 2
+ 
+    // If left child is smaller than root
+    if (l < n && this->recommendedMovies.at(l).getReleaseYear() < this->recommendedMovies.at(smallest).getReleaseYear())
+        smallest = l;
+ 
+    // If right child is smaller than smallest so far
+    if (r < n && this->recommendedMovies.at(r).getReleaseYear() < this->recommendedMovies.at(smallest).getReleaseYear())
+        smallest = r;
+ 
+    // If smallest is not root
+    if (smallest != i) {
+        swap(this->recommendedMovies[i], this->recommendedMovies[smallest]);
+ 
+        // Recursively heapify the affected sub-tree
+        heapify_Release(n, smallest);
+    }
+}
+
+void Movies::heapify_Popularity(int n, int i) {
+    int smallest = i; // Initialize smallest as root
+    int l = 2 * i + 1; // left = 2*i + 1
+    int r = 2 * i + 2; // right = 2*i + 2
+ 
+    // If left child is smaller than root
+    if (l < n && this->recommendedMovies.at(l).getTotalVotes() < this->recommendedMovies.at(smallest).getTotalVotes())
+        smallest = l;
+ 
+    // If right child is smaller than smallest so far
+    if (r < n && this->recommendedMovies.at(r).getTotalVotes() < this->recommendedMovies.at(smallest).getTotalVotes())
+        smallest = r;
+ 
+    // If smallest is not root
+    if (smallest != i) {
+        swap(this->recommendedMovies[i], this->recommendedMovies[smallest]);
+ 
+        // Recursively heapify the affected sub-tree
+        heapify_Popularity(n, smallest);
+    }
+}
 // helper function that is called by ratingsort function
 // swaps the least to the top of the vector with heap property
 
@@ -129,6 +237,23 @@ Movie Movies::getMovie(string movieName)
     return nullMovie;
 }
 
+bool Movies::doesActorExist(string actorName)
+{
+    // this is here to make function fail if it is called before it is implemented 
+    //assert(0==1);
+    // iterate through allMovies until a Movie object with the actor actorName is found  
+    // once it is found, immediately return true 
+    // if it iterates through all of allMovies and it is still not found, return false
+}
+bool Movies::doesDirectorExist(string directorName)
+{
+    // this is here to make function fail if it is called before it is implemented 
+    //assert(0==1);
+    // iterate through allMovies until a Movie object with the director directorName is found  
+    // once it is found, immediately return true 
+    // if it iterates through all of allMovies and it is still not found, return false
+}
+
 void Movies::generateRecommendations(string basisName, int basis)
 {
     // recommend by genre
@@ -195,22 +320,6 @@ void Movies::generateRecommendationsDirector(string directorName)
 
     // search through allMovies for all Movie objects that have the director given by the parameter directorName
     // if there is a Movie object with that director, add it to recommendedMovies 
-}
-
-void Movies::testPushBackforTestingOnly(Movie reccMovie) {
-    recommendedMovies.push_back(reccMovie);
-}
-
-Movie Movies::getallMoviesmovieForTestingOnly(int i) {
-    return allMovies.at(i);
-}
-
-Movie Movies::getMovieTestingOnly(int i) {
-    return recommendedMovies.at(i);
-}
-
-int Movies::sizeofRecommendedForTestingOnly() {
-    return recommendedMovies.size();
 }
 
 
