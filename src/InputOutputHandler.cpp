@@ -33,6 +33,7 @@ int InputOutputHandler::handleIntroOptions()
             }
         }
     }
+    cout << endl;
     return option;
     
 }
@@ -41,7 +42,7 @@ int InputOutputHandler::handleIntroOptions()
 string InputOutputHandler::handleNameRecommendationOption(Movies& movieRecommendationInterface)
 {
     // returns the name the user chose for recommendation
-    cout << "Enter a movie for a similar recommendation" << endl;
+    cout << "Enter a movie name for a similar movie recommendation" << endl;
     string movieName = "";
     cin >> movieName;
     cout << endl;
@@ -52,7 +53,7 @@ string InputOutputHandler::handleNameRecommendationOption(Movies& movieRecommend
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(),'\n');
             cout << "Movie not found!" << endl;
-            cout << "Enter a movie for a similar recommendation" << endl;
+            cout << "Enter a movie name for a similar movie recommendation" << endl;
             cin >> movieName;
             cout << endl;
         }
@@ -64,7 +65,7 @@ string InputOutputHandler::handleNameRecommendationOption(Movies& movieRecommend
                 break;
             }
             cout << "Movie not found!" << endl;
-            cout << "Enter a movie for a similar recommendation" << endl;
+            cout << "Enter a movie name for a similar movie recommendation" << endl;
             cin >> movieName;
             cout << endl;
         }
