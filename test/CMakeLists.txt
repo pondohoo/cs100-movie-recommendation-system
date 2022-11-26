@@ -1,18 +1,12 @@
-cmake_minimum_required(VERSION 3.8)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
 
-set(This MovieRecommendationsTests)
+ADD_SUBDIRECTORY(googletest)
 
-set(Sources
+
+ADD_EXECUTABLE(test
     test.cpp
 )
 
-add_executable(${This} ${Sources})
-target_link_libraries(${This} PUBLIC
-    gtest_main
-    MovieRecommendations
-)
+TARGET_LINK_LIBRARIES(test gtest)
+TARGET_COMPILE_DEFINITIONS(test PRIVATE gtest_disable_pthreads=ON)
 
-add_test(
-    NAME ${This}
-    COMMAND ${This}
-)
