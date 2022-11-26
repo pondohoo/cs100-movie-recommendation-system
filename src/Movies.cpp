@@ -1,6 +1,10 @@
 #include "../include/Movies.h"
 #include "../include/DatasetAccessor.h"
+#include "../include/Movie.h"
+#include <iostream>
+
 #include <algorithm>
+
 
 Movies::Movies()
 {
@@ -9,15 +13,30 @@ Movies::Movies()
 }
 
 
-
-void Movies::generateRecommendationsDirector(string directorName){
-    for (int i=0; i<allMovies.size(); i++){
-        if (allMovies[i].getDirector()==directorName){
-            recommendedMovies.push_back(allMovies[i]);
-        }
+int Movies::PrintRecommendedMovies(int pageNumber){
+    int movieCounter = 0;
+    bool atLeastOneMovie = false;
+    // pageNumber == 0-> items 0->10
+    // pageNumber == 1-> items 10->20
+    // pageNumber == 5-> items 50->60
+    cout << endl;
+    int i = pageNumber*10;
+    int endi = i+10;
+    for(int i = pageNumber*10;i<endi&&i<this->recommendedMovies.size();i++) {
+        ++movieCounter;
+        atLeastOneMovie = true;
+        cout<<this->recommendedMovies.at(i).getName()<<'\n';
     }
-    this->recommendedMovies=recommendedMovies;
+    if (!atLeastOneMovie)
+    {
+        cout << "No movies found!" << endl;
+    }
+    cout << endl;
+    return movieCounter;
 }
+
+
+
 // utilize the heap sort algorithm to sort the recommendedMovies vector by rating from greatest to least
 void Movies::SortRecommendedMoviesbyRating() {
     for (int i = this->recommendedMovies.size() / 2 - 1; i >= 0; i--) {
@@ -60,9 +79,10 @@ void Movies::heapify_Rating(int n, int i) {
 }
 
 // functions only used in unit tests to 
+//      -get a movie from allMovies vector
 //      -push directly to the reccommendedMovies vector,
-//      -get a movie from allmovies to push into reccommendMovies
 //      -get a movie from reccommendedMovies
+//      -get size of recommendedMovies vector
 
 void Movies::testPushBackforTestingOnly(Movie reccMovie) {
     recommendedMovies.push_back(reccMovie);
@@ -74,6 +94,10 @@ Movie Movies::getallMoviesmovieForTestingOnly(int i) {
 
 Movie Movies::getMovieTestingOnly(int i) {
     return recommendedMovies.at(i);
+}
+
+int Movies::sizeofRecommendedForTestingOnly() {
+    return recommendedMovies.size();
 }
 
 Movie Movies::getMovie(string movieName)
@@ -103,6 +127,23 @@ Movie Movies::getMovie(string movieName)
     Movie nullMovie(name, genre, director, star, rating, votes, year);
 
     return nullMovie;
+}
+
+bool Movies::doesActorExist(string actorName)
+{
+    // this is here to make function fail if it is called before it is implemented 
+    //assert(0==1);
+    // iterate through allMovies until a Movie object with the actor actorName is found  
+    // once it is found, immediately return true 
+    // if it iterates through all of allMovies and it is still not found, return false
+}
+bool Movies::doesDirectorExist(string directorName)
+{
+    // this is here to make function fail if it is called before it is implemented 
+    //assert(0==1);
+    // iterate through allMovies until a Movie object with the director directorName is found  
+    // once it is found, immediately return true 
+    // if it iterates through all of allMovies and it is still not found, return false
 }
 
 void Movies::generateRecommendations(string basisName, int basis)
@@ -145,6 +186,12 @@ void Movies::generateRecommendationsGenre(string genreName)
 
     // search through allMovies for all Movie objects that have the genre given by the parameter genreName
     // if there is a Movie object with that genre, add it to recommendedMovies 
+
+    for (int i = 0; i < allMovies.size(); ++i) {
+        if (allMovies.at(i).getGenre() == genreName) {
+            recommendedMovies.push_back(allMovies.at(i));
+        }
+    }
 }
 
 
@@ -157,9 +204,19 @@ void Movies::generateRecommendationsActor(string actorName)
     // if there is a Movie object with that actor, add it to recommendedMovies 
 }
 
-void Movies::PrintRecomendedMovies()
+
+void Movies::generateRecommendationsDirector(string directorName)
 {
     // this is just until function is implemented, so it will fail if it is called
     // assert(0==1);
 
+
+    // search through allMovies for all Movie objects that have the director name given by the parameter directorName
+    // if there is a Movie object with that director, add it to recommendedMovies 
+
+    for (int i = 0; i < allMovies.size(); ++i) {
+        if (allMovies.at(i).getDirector() == directorName) {
+            recommendedMovies.push_back(allMovies.at(i));
+        }
+    }
 }
