@@ -40,28 +40,98 @@ int InputOutputHandler::handleIntroOptions()
 
 string InputOutputHandler::handleNameRecommendationOption(Movies& movieRecommendationInterface)
 {
-    // this is just until function is implemented, so it will fail if it is called
-    assert(0==1);
     // returns the name the user chose for recommendation
+    cout << "Enter a movie you like for a similar recommendation" << endl;
+    string movieName = "";
+    cin >> movieName;
+    while(1)
+    {
+        if(cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(),'\n');
+            cout << "Please enter a valid option" << endl;
+            cin >> movieName;
+        }
+        if(!cin.fail())
+        {
+            break;
+        }
+    }
+    return movieName;
+
 }
+
+
 string InputOutputHandler::handleGenreRecommendationOption(Movies& movieRecommendationInterface)
 {
-    // this is just until function is implemented, so it will fail if it is called
-    assert(0==1);
     // displays genres available for selection:
-    // Drama, Adventure, Action, Comedy, Horror, Biography, Crime, Western, Fantasy, Animation, Thriller, Romance, Mystery, 
-    // Sci-Fi, Sport, Musical
+    vector<string> genres;
+    genres.push_back("Drama"); 
+    genres.push_back("Adventure");
+    genres.push_back("Action");
+    genres.push_back("Comedy");
+    genres.push_back("Horror");
+    genres.push_back("Biography");
+    genres.push_back("Crime");
+    genres.push_back("Western");
+    genres.push_back("Fantasy");
+    genres.push_back("Animation"); 
+    genres.push_back("Thriller");
+    genres.push_back("Romance");
+    genres.push_back("Mystery");
+    genres.push_back("Sci-Fi");
+    genres.push_back("Sport");
+    genres.push_back("Musical");
 
+    cout << "List of available genres:" << endl;
+    for (unsigned int i = 0; i < genres.size() - 1; ++i)
+    {
+        cout << genres.at(i) << ", ";
+        if (i > 0 && i % 5==0)
+        {
+            cout << endl;
+        }
+    }
+    cout << genres.at(genres.size()-1) << endl;
+    cout << endl;
+    cout << "Please enter a genre from the list" << endl;
+    string userGenre = "";
+    cin >> userGenre;
     // validate if user entered a genre from the list
-
+    while(1)
+    {
+        if(cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(),'\n');
+            cout << "Please enter a valid option" << endl;
+            cin >> userGenre;
+        }
+        if(!cin.fail())
+        {
+            // iterate through genre list and check if userGenre is in list
+            for (unsigned int i = 0; i < genres.size(); ++i)
+            {
+                if (userGenre == genres.at(i))
+                {
+                    cout << endl << endl;
+                    return userGenre;
+                }
+            }
+            cout << "Please enter a valid option" << endl;
+            cin >> userGenre;
+        }
+    }
      // returns the genre the user chose for recommendation
+     return userGenre;
 
 }
 string InputOutputHandler::handleActorRecommendationOption(Movies& movieRecommendationInterface)
 {
-    // this is just until function is implemented, so it will fail if it is called
-    assert(0==1);
-    // returns the actor the user chose for recommendation
+    
+
+
 }
 string InputOutputHandler::handleDirectorRecommendationOption(Movies& movieRecommendationInterface)
 {
