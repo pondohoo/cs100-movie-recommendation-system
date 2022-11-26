@@ -140,14 +140,72 @@ string InputOutputHandler::handleGenreRecommendationOption(Movies& movieRecommen
 }
 string InputOutputHandler::handleActorRecommendationOption(Movies& movieRecommendationInterface)
 {
-    
+    // returns the actor the user chose for recommendation
+    cout << "Enter an actor (full name) to get a recommendation on movies they starred in" << endl;
+    string actorName;
+    cin >> actorName;
+    cout << endl;
+    while(1)
+    {
+        if(cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(),'\n');
+            cout << "Actor not found!" << endl;
+            cout << "Enter an actor (full name) to get a recommendation on movies they starred in" << endl;
+            cin >> actorName;
+            cout << endl;
+            
+        }
+        if(!cin.fail())
+        {
+            if (movieRecommendationInterface.doesActorExist(actorName) != "N/A")
+            {
+                break;
+            }
+            cout << "Actor not found!" << endl;
+            cout << "Enter an actor (full name) to get a recommendation on movies they starred in" << endl;
+            cin >> actorName;
+            cout << endl;
+            
+        }
+    }
+    return actorName;
 }
 
 string InputOutputHandler::handleDirectorRecommendationOption(Movies& movieRecommendationInterface)
 {
-    // this is just until function is implemented, so it will fail if it is called
-    assert(0==1);
     // returns the director the user chose for recommendation
+    cout << "Enter a director (full name) to get a recommendation on movies they directed" << endl;
+    string directorName;
+    cin >> directorName;
+    cout << endl;
+    while(1)
+    {
+        if(cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(),'\n');
+            cout << "Director not found!" << endl;
+            cout << "Enter a director (full name) to get a recommendation on movies they directed" << endl;
+            cin >> directorName;
+            cout << endl;
+            
+        }
+        if(!cin.fail())
+        {
+            if (movieRecommendationInterface.doesDirectorExist(directorName) != "N/A")
+            {
+                break;
+            }
+            cout << "Direcotr not found!" << endl;
+            cout << "Enter a director (full name) to get a recommendation on movies they directed" << endl;
+            cin >> directorName;
+            cout << endl;
+            
+        }
+    }
+    return directorName;
 }
 
 
