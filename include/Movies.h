@@ -37,6 +37,11 @@ class Movies {
         // get a Movie object from allMovies based on name
         Movie getMovie(string movieName);
 
+        // check if user entered actor exists
+        bool doesActorExist(string actorName);
+        // check if user entered director exists
+        bool doesDirectorExist(string directorName);
+
         // if basis == 1, generates recommendations based on name
         // if basis == 2, generates recommendations based on genre
         // if basis == 3, generates recommendations based on starring actor
