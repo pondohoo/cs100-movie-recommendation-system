@@ -16,25 +16,63 @@ class Movies {
         // initialize vector<Movie> allMovies to that vector
         Movies();
 
-        
-        void SortRecommendedMoviebyRating();
 
-        //utilize vector<Movie> allMovies to take the initiale index in dataset of the sorted name in alphabetical order for each movies
-        //it compute a vector<Movie> recommendedMovies sorted by alphatical order
+
+
+        // prints 10 movies max for every page
+        // returns number of movies printed (for testing)
+        // starts with page 0
+        int PrintRecommendedMovies(int pageNumber);
+
+
         void SortRecommendedMoviesbyName();
-
-        //utilize vector<Movie> allMovies to take the initiale index in dataset of the sorted release year for each movies
-        //it compute a vector<Movie> recommendedMovies sorted by release year
         void SortRecommendedMoviesbyRelease();
-
-        //utilize vector<Movie> allMovies to take the initiale index in dataset of the sorted rating for each movies
-        //it compute a vector<Movie> recommendedMovies sorted by rating
         void SortRecommendedMoviesbyPopularity();
-
-       
-        void PrintRecomendedMovies();
-        Movie getMovie();
+        // utilize the heap sort algorithm to sort the recommendedMovies vector by rating from greatest to least
+        void SortRecommendedMoviesbyRating();
+        void PrintAvailableGenres();
+        void PrintAvailableSubGenres();
         void generateRecommendations();
+        
+        // get a Movie object from allMovies based on name
+        Movie getMovie(string movieName);
+
+        // if basis == 1, generates recommendations based on name
+        // if basis == 2, generates recommendations based on genre
+        // if basis == 3, generates recommendations based on starring actor
+        // if basis == 4, generates recommendatinos based on director
+        // if basis is anything else, does nothing
+        void generateRecommendations(string basisName, int basis);
+
+    private:
+        // helper functions
+
+        // helper function that is called by ratingsort function
+        // swaps the least to the top of the vector with heap property
+        void heapify_Rating(int , int );
+
+        // called from generateRecommendations, initializes recommendedMovies list based
+        // on genre parameter
+        void generateRecommendationsGenre(string genreName);
+
+        // called from generateRecommendations, initializes recommendedMovies list based
+        // on actor parameter
+        void generateRecommendationsActor(string actorName);
+
+        // called from generateRecommendations, initializes recommendedMovies list based
+        // on director parameter
+        void generateRecommendationsDirector(string directorName);
+
+    public:
+        // functions only used in unit tests to 
+        //      -get a movie from reccommendedMovies
+        //      -push directly to the reccommendedMovies vector,
+        //      -get a movie from allMovies vector
+        //      -get size of recommendedMovies vector
+        Movie getMovieTestingOnly(int );
+        void testPushBackforTestingOnly(Movie );
+        Movie getallMoviesmovieForTestingOnly(int i);
+        int sizeofRecommendedForTestingOnly();
 
 };
 

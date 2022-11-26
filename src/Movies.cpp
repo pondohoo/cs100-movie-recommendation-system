@@ -1,101 +1,218 @@
 #include "../include/Movies.h"
 #include "../include/DatasetAccessor.h"
 #include "../include/Movie.h"
+#include <iostream>
+
+#include <algorithm>
+
 
 Movies::Movies()
 {
     DatasetAccessor movieDataset;
     allMovies = movieDataset.generateMoviesVector();
-    std::vector<Movie> recommendedMovies;
+}
+
+
+int Movies::PrintRecommendedMovies(int pageNumber){
+    int movieCounter = 0;
+    bool atLeastOneMovie = false;
+    // pageNumber == 0-> items 0->10
+    // pageNumber == 1-> items 10->20
+    // pageNumber == 5-> items 50->60
+    cout << endl;
+    int i = pageNumber*10;
+    int endi = i+10;
+    for(int i = pageNumber*10;i<endi&&i<this->recommendedMovies.size();i++) {
+        ++movieCounter;
+        atLeastOneMovie = true;
+        cout<<this->recommendedMovies.at(i).getName()<<'\n';
+    }
+    if (!atLeastOneMovie)
+    {
+        cout << "No movies found!" << endl;
+    }
+    cout << endl;
+    return movieCounter;
 }
 
 
 
-void Movies::SortRecommendedMoviesbyName(){
-    std::vector<std::string> name;
-    std::vector<int> index;
-    for (int i=0;i<recommendedMovies.size();i++){
-        name.push_back(recommendedMovies[i].getName());
+// utilize the heap sort algorithm to sort the recommendedMovies vector by rating from greatest to least
+void Movies::SortRecommendedMoviesbyRating() {
+    for (int i = this->recommendedMovies.size() / 2 - 1; i >= 0; i--) {
+        heapify_Rating(this->recommendedMovies.size(), i);
     }
 
-    bool mycomp(string a, string b){
-        return a<b;
+    // One by one extract an element from heap
+    for (int i = this->recommendedMovies.size() - 1; i >= 0; i--) {
+        // Move current root to end
+        swap(this->recommendedMovies[0], this->recommendedMovies[i]);
+ 
+        // call max heapify on the reduced heap
+        heapify_Rating(i, 0);
     }
+}
 
-    std::sort(name.begin(),name.end(), mycomp);
+// helper function that is called by ratingsort function
+// swaps the least to the top of the vector with heap property
 
-    for (int i=0; i<name.size(); i++){
-        for (int j=0; j<recommendedMovies.size(); j++){
-            if (recommendedMovies[j].getName()==name[i]){
-                index.push_back(j);
-            }
+void Movies::heapify_Rating(int n, int i) {
+    int smallest = i; // Initialize smallest as root
+    int l = 2 * i + 1; // left = 2*i + 1
+    int r = 2 * i + 2; // right = 2*i + 2
+ 
+    // If left child is smaller than root
+    if (l < n && this->recommendedMovies.at(l).getRating() < this->recommendedMovies.at(smallest).getRating())
+        smallest = l;
+ 
+    // If right child is smaller than smallest so far
+    if (r < n && this->recommendedMovies.at(r).getRating() < this->recommendedMovies.at(smallest).getRating())
+        smallest = r;
+ 
+    // If smallest is not root
+    if (smallest != i) {
+        swap(this->recommendedMovies[i], this->recommendedMovies[smallest]);
+ 
+        // Recursively heapify the affected sub-tree
+        heapify_Rating(n, smallest);
+    }
+}
+
+// functions only used in unit tests to 
+//      -get a movie from allMovies vector
+//      -push directly to the reccommendedMovies vector,
+//      -get a movie from reccommendedMovies
+//      -get size of recommendedMovies vector
+
+void Movies::testPushBackforTestingOnly(Movie reccMovie) {
+    recommendedMovies.push_back(reccMovie);
+}
+
+Movie Movies::getallMoviesmovieForTestingOnly(int i) {
+    return allMovies.at(i);
+}
+
+Movie Movies::getMovieTestingOnly(int i) {
+    return recommendedMovies.at(i);
+}
+
+int Movies::sizeofRecommendedForTestingOnly() {
+    return recommendedMovies.size();
+}
+
+Movie Movies::getMovie(string movieName)
+{
+    // this is just until function is implemented, so it will fail if it is called
+    // assert(0==1);
+
+    // search the allMovies for the movie name and return the object associated with that movie name
+    for (int i = 0; i < allMovies.size(); ++i) {
+        if (allMovies.at(i).getName() == movieName) {
+            return allMovies.at(i);
         }
     }
-    
-    std::vector<Movie> sort_Movies;
-    for (int i=0; i<name.size();i++){
-        sort_Movies.push_back(recommendedMovies[index[i]]);
-    }
 
-    this->recommendedMovies = sort_Movies;
+    // if it's not found maybe you could create and return a Movie object with all
+    // string data members as "N/A" and int and double data members as 0 so we can validate it
+    // in main
+
+    string name = "N/A";
+    string genre = "N/A";
+    string director = "N/A";
+    string star = "N/A";
+    double rating = 0.0;
+    int votes = 0;
+    int year = 0;
+
+    Movie nullMovie(name, genre, director, star, rating, votes, year);
+
+    return nullMovie;
 }
 
-void Movies::SortRecommendedMoviesbyRelease(){
-    std::vector<int> release;
-    std::vector<int> index;
-    for (int i=0;i<recommendedMovies.size();i++){
-        release.push_back(recommendedMovies[i].getReleaseYear());
-    }
+void Movies::generateRecommendations(string basisName, int basis)
+{
+    // recommend by genre
+    if (basis == 1)
+    {
+        // compare genre (stored in basisName) with genre from every movie in allMovies
+        // if the genre (stored in basisName) is the current movie genre, add the movie to recommendedMovies
+        generateRecommendationsGenre(basisName);
     
-    bool mycomp(int a, int b){
-        return a<b;
     }
+    // recommend by actor
+    else if (basis == 2)
+    {
+        // compare actor (stored in basisName) with leadingActor from every movie in allMovies
+        // if the actor (sotred in basisName) is the current movie leadingActor, add the movie to recommendedMovies
+        generateRecommendationsActor(basisName);
+    
+    
+    
+    }
+    // recommend by director
+    else if (basis == 3)
+    {
+        // compare director (stored in basisName) with director from every movie in allMovies
+        // if the director (stored in basisName) is the current movie director, add the movie to recommendedMovies
+        generateRecommendationsDirector(basisName);
 
-    std::sort(release.begin(),release.end(), mycomp);
-   
-    for (int i=0; i<release.size(); i++){
-        for (int j=0; j<recommendedMovies.size(); j++){
-            if (recommendedMovies[j].getReleaseYear()==release[i]){
-                index.push_back(j);
-            }
+    
+    
+    }
+}
+
+void Movies::generateRecommendationsGenre(string genreName)
+{
+    // this is just until function is implemented, so it will fail if it is called
+    // assert(0==1);
+
+
+    // search through allMovies for all Movie objects that have the genre given by the parameter genreName
+    // if there is a Movie object with that genre, add it to recommendedMovies 
+
+    for (int i = 0; i < allMovies.size(); ++i) {
+        if (allMovies.at(i).getGenre() == genreName) {
+            recommendedMovies.push_back(allMovies.at(i));
         }
     }
-    
-    std::vector<Movie> sort_Movies ;
-    for (int i=0; i<release.size();i++){
-        sort_Movies.push_back(recommendedMovies[index[i]]);
-    }
-
-    this->recommendedMovies = sort_Movies;
 }
 
- void Movies::SortRecommendedMoviesbyPopularity(){
-    std::vector<int> vote;
-    std::vector<int> index;
-    for (int i=0;i<recommendedMovies.size();i++){
-        vote.push_back(recommendedMovies[i].getTotalVotes());
-    }
 
-    bool mycomp(int a, int b){
-        return a<b;
-    }
+void Movies::generateRecommendationsActor(string actorName)
+{
+    // this is just until function is implemented, so it will fail if it is called
+    // assert(0==1);
 
-    std::sort(vote.begin(),vote.end() mycomp);
-
-    for (int i=0; i<vote.size(); i++){
-        for (int j=0; j<recommendedMovies.size(); j++){
-            if (recommendedMovies[j].getTotalVotes()==vote[i]){
-                index.push_back(j);
-            }
-        }
-    }
-    
-    std::vector<Movie> sort_Movies ;
-    for (int i=0; i<vote.size();i++){
-        sort_Movies.push_back(recommendedMovies[index[i]]);
-    }
-
-    this->recommendedMovies = sort_Movies;
+    // search through allMovies for all Movie objects that have the actor given by the parameter actorName
+    // if there is a Movie object with that actor, add it to recommendedMovies 
 }
+
+
+void Movies::generateRecommendationsDirector(string directorName)
+{
+    // this is just until function is implemented, so it will fail if it is called
+    // assert(0==1);
+
+    // search through allMovies for all Movie objects that have the director given by the parameter directorName
+    // if there is a Movie object with that director, add it to recommendedMovies 
+}
+
+void Movies::testPushBackforTestingOnly(Movie reccMovie) {
+    recommendedMovies.push_back(reccMovie);
+}
+
+Movie Movies::getallMoviesmovieForTestingOnly(int i) {
+    return allMovies.at(i);
+}
+
+Movie Movies::getMovieTestingOnly(int i) {
+    return recommendedMovies.at(i);
+}
+
+int Movies::sizeofRecommendedForTestingOnly() {
+    return recommendedMovies.size();
+}
+
+
 
 
