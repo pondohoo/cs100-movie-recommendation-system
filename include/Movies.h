@@ -9,8 +9,6 @@ using namespace std;
 class Movies {
     private:
         vector<Movie> recommendedMovies;
-        vector<string> availableSubGenres;
-        vector<string> availableGenres;
         vector<Movie> allMovies;
 
     public:
@@ -19,30 +17,30 @@ class Movies {
         Movies();
 
 
-        void SortRecommendedMoviebyRating();
+
+
+        // prints 10 movies max for every page
+        // returns number of movies printed (for testing)
+        // starts with page 0
+        int PrintRecommendedMovies(int pageNumber);
+
+
         void SortRecommendedMoviesbyName();
         void SortRecommendedMoviesbyRelease();
         void SortRecommendedMoviesbyPopularity();
         // utilize the heap sort algorithm to sort the recommendedMovies vector by rating from greatest to least
         void SortRecommendedMoviesbyRating();
-        //use the vector<Movie> Recommended
-        void PrintRecomendedMovies();
         void PrintAvailableGenres();
         void PrintAvailableSubGenres();
         void generateRecommendations();
         
-        // functions only used in unit tests to 
-        //      -push directly to the reccommendedMovies vector,
-        //      -get a movie from allmovies to push into reccommendMovies
-        //      -get a movie from reccommendedMovies
-
-        Movie getMovieTestingOnly(int );
-        void testPushBackforTestingOnly(Movie );
-        Movie getallMoviesmovieForTestingOnly(int i);
-
-        
         // get a Movie object from allMovies based on name
         Movie getMovie(string movieName);
+
+        // check if user entered actor exists
+        bool doesActorExist(string actorName);
+        // check if user entered director exists
+        bool doesDirectorExist(string directorName);
 
         // if basis == 1, generates recommendations based on name
         // if basis == 2, generates recommendations based on genre
@@ -69,6 +67,17 @@ class Movies {
         // called from generateRecommendations, initializes recommendedMovies list based
         // on director parameter
         void generateRecommendationsDirector(string directorName);
+
+    public:
+        // functions only used in unit tests to 
+        //      -get a movie from reccommendedMovies
+        //      -push directly to the reccommendedMovies vector,
+        //      -get a movie from allMovies vector
+        //      -get size of recommendedMovies vector
+        Movie getMovieTestingOnly(int );
+        void testPushBackforTestingOnly(Movie );
+        Movie getallMoviesmovieForTestingOnly(int i);
+        int sizeofRecommendedForTestingOnly();
 
 };
 
