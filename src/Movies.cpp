@@ -129,19 +129,21 @@ Movie Movies::getMovie(string movieName)
     return nullMovie;
 }
 
-string Movies::doesActorExist(string actorName)
+bool Movies::doesActorExist(string actorName)
 {
     // this is here to make function fail if it is called before it is implemented 
     assert(0==1);
-    // iterate through allMovies until a Movie object with the starringActor actorName is found   
-    // if not found, return "N/A"
+    // iterate through allMovies until a Movie object with the actor actorName is found  
+    // once it is found, immediately return true 
+    // if it iterates through all of allMovies and it is still not found, return false
 }
-string Movies::doesDirectorExist(string directorName)
+bool Movies::doesDirectorExist(string directorName)
 {
     // this is here to make function fail if it is called before it is implemented 
     assert(0==1);
-    // iterate through allMovies until a Movie object with the director directorName is found   
-    // if not found, return "N/A"
+    // iterate through allMovies until a Movie object with the director directorName is found  
+    // once it is found, immediately return true 
+    // if it iterates through all of allMovies and it is still not found, return false
 }
 
 void Movies::generateRecommendations(string basisName, int basis)

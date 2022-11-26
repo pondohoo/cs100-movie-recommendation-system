@@ -38,9 +38,9 @@ class Movies {
         Movie getMovie(string movieName);
 
         // check if user entered actor exists
-        string doesActorExist(string actorName);
+        bool doesActorExist(string actorName);
         // check if user entered director exists
-        string doesDirectorExist(string directorName);
+        bool doesDirectorExist(string directorName);
 
         // if basis == 1, generates recommendations based on name
         // if basis == 2, generates recommendations based on genre

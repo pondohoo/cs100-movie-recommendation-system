@@ -160,7 +160,7 @@ string InputOutputHandler::handleActorRecommendationOption(Movies& movieRecommen
         }
         if(!cin.fail())
         {
-            if (movieRecommendationInterface.doesActorExist(actorName) != "N/A")
+            if (movieRecommendationInterface.doesActorExist(actorName))
             {
                 break;
             }
@@ -195,7 +195,7 @@ string InputOutputHandler::handleDirectorRecommendationOption(Movies& movieRecom
         }
         if(!cin.fail())
         {
-            if (movieRecommendationInterface.doesDirectorExist(directorName) != "N/A")
+            if (movieRecommendationInterface.doesDirectorExist(directorName))
             {
                 break;
             }
