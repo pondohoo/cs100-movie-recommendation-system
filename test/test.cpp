@@ -60,3 +60,37 @@ TEST(MoviesVectorSetupTests, TestNumMovies) {
 
 
 }
+
+
+TEST(ReleaseSortTest, findHighestRelease) {
+    Movies TestMovies;
+
+    for (int i = 0; i < 7668; ++i) {
+        TestMovies.testPushBackforTestingOnly(TestMovies.getallMoviesmovieForTestingOnly(i));
+    }
+
+    TestMovies.SortRecommendedMoviesbyRelease();
+
+    EXPECT_EQ(TestMovies.getMovieTestingOnly(0).getReleaseYear(), 2020);
+}
+
+
+TEST(ReleaseSortTest, findlowestTestRelease) {
+    Movies TestMovies;
+
+    for (int i = 0; i < 7668; ++i) {
+        TestMovies.testPushBackforTestingOnly(TestMovies.getallMoviesmovieForTestingOnly(i));
+    }
+
+    TestMovies.SortRecommendedMoviesbyRelease();
+
+    EXPECT_EQ(TestMovies.getMovieTestingOnly(7667).getReleaseYear(), 1980);
+}
+
+
+//Main function
+
+int main(int argc, char **argv) {
+  ::testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
+}
