@@ -41,21 +41,32 @@ int InputOutputHandler::handleIntroOptions()
 string InputOutputHandler::handleNameRecommendationOption(Movies& movieRecommendationInterface)
 {
     // returns the name the user chose for recommendation
-    cout << "Enter a movie you like for a similar recommendation" << endl;
+    cout << "Enter a movie for a similar recommendation" << endl;
     string movieName = "";
     cin >> movieName;
+    cout << endl;
     while(1)
     {
         if(cin.fail())
         {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(),'\n');
-            cout << "Please enter a valid option" << endl;
+            cout << "Movie not found!" << endl;
+            cout << "Enter a movie for a similar recommendation" << endl;
             cin >> movieName;
+            cout << endl;
         }
         if(!cin.fail())
         {
-            break;
+            Movie currMovie = movieRecommendationInterface.getMovie(movieName);
+            if (currMovie.getName() != "N/A")
+            {
+                break;
+            }
+            cout << "Movie not found!" << endl;
+            cout << "Enter a movie for a similar recommendation" << endl;
+            cin >> movieName;
+            cout << endl;
         }
     }
     return movieName;
@@ -130,9 +141,8 @@ string InputOutputHandler::handleGenreRecommendationOption(Movies& movieRecommen
 string InputOutputHandler::handleActorRecommendationOption(Movies& movieRecommendationInterface)
 {
     
-
-
 }
+
 string InputOutputHandler::handleDirectorRecommendationOption(Movies& movieRecommendationInterface)
 {
     // this is just until function is implemented, so it will fail if it is called
