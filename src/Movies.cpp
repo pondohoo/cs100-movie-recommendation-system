@@ -75,24 +75,25 @@ void Movies::SortRecommendedMoviesbyName(){
     vector<int> index;
     for (int i=0; i<this->recommendedMovies.size(); i++){
         name.push_back(recommendedMovies[i].getName());
-        index.push_back(i);
     }
-
+    vector<string> testName = name;
     sort(name.begin(),name.end());
+    
 
     for (int i=0; i<name.size();i++){
-        for (int j=0; j<this->recommendedMovies.size(); i++){
+        for (int j=0; j<this->recommendedMovies.size(); j++){
             if(name[i]==this->recommendedMovies[j].getName()){
                 index.push_back(j);
+                break;
             }
         }
 
     }
-
+    vector<Movie> newRecommendedList = recommendedMovies;
+    
     for (int i=0; i<this->recommendedMovies.size();i++){
-        this->recommendedMovies[i]=this->recommendedMovies[index[i]];
+        this->recommendedMovies[i]=newRecommendedList[index[i]]; 
     }
-
 
 
 
