@@ -145,6 +145,52 @@ TEST(RatingSortTest, findLowestRated) {
 
 }
 
+TEST(NameSortTest, sortfirst10MoviesByName) {
+    Movies TestMovies1;
+    
+    for (int i = 0; i < 10; ++i) {
+        TestMovies1.testPushBackforTestingOnly(TestMovies1.getallMoviesmovieForTestingOnly(i));
+    }
+
+    TestMovies1.SortRecommendedMoviesbyName();
+    
+    EXPECT_EQ(TestMovies1.getMovieTestingOnly(0).getName(), "Airplane!");
+    EXPECT_EQ(TestMovies1.getMovieTestingOnly(1).getName(), "Caddyshack");
+    EXPECT_EQ(TestMovies1.getMovieTestingOnly(2).getName(), "Friday the 13th");
+    EXPECT_EQ(TestMovies1.getMovieTestingOnly(3).getName(), "Raging Bull");
+    EXPECT_EQ(TestMovies1.getMovieTestingOnly(4).getName(), "Star Wars: Episode V - The Empire Strikes Back");
+    EXPECT_EQ(TestMovies1.getMovieTestingOnly(5).getName(),"Superman II" );
+    EXPECT_EQ(TestMovies1.getMovieTestingOnly(6).getName(), "The Blue Lagoon");
+    EXPECT_EQ(TestMovies1.getMovieTestingOnly(7).getName(), "The Blues Brothers");
+    EXPECT_EQ(TestMovies1.getMovieTestingOnly(8).getName(), "The Long Riders");
+    EXPECT_EQ(TestMovies1.getMovieTestingOnly(9).getName(), "The Shining");
+
+}
+
+
+TEST(PopularitySortTest, sortfirst10MoviesByPopularity) {
+    Movies TestMovies1;
+    
+    for (int i = 0; i < 10; ++i) {
+        TestMovies1.testPushBackforTestingOnly(TestMovies1.getallMoviesmovieForTestingOnly(i));
+    }
+
+    TestMovies1.SortRecommendedMoviesbyPopularity();
+    
+    EXPECT_EQ(TestMovies1.getMovieTestingOnly(0).getName(), "Star Wars: Episode V - The Empire Strikes Back");
+    EXPECT_EQ(TestMovies1.getMovieTestingOnly(1).getName(), "The Shining");
+    EXPECT_EQ(TestMovies1.getMovieTestingOnly(2).getName(), "Raging Bull");
+    EXPECT_EQ(TestMovies1.getMovieTestingOnly(3).getName(), "Airplane!");
+    EXPECT_EQ(TestMovies1.getMovieTestingOnly(4).getName(), "The Blues Brothers");
+    EXPECT_EQ(TestMovies1.getMovieTestingOnly(5).getName(), "Friday the 13th");
+    EXPECT_EQ(TestMovies1.getMovieTestingOnly(6).getName(), "Caddyshack");
+    EXPECT_EQ(TestMovies1.getMovieTestingOnly(7).getName(), "Superman II");
+    EXPECT_EQ(TestMovies1.getMovieTestingOnly(8).getName(), "The Blue Lagoon");
+    EXPECT_EQ(TestMovies1.getMovieTestingOnly(9).getName(), "The Long Riders");
+
+}
+
+
 TEST(GetMovieTests, MovieIsIn) {
     Movies TestMovies1;
 
@@ -284,6 +330,34 @@ TEST(PrintRecommendedMoviesTests, NotFullPageMovies) {
     EXPECT_EQ(TestMovies.PrintRecommendedMovies(0), 5);
 }
 
+
+
+TEST(ReleaseSortTest, findHighestRelease) {
+    Movies TestMovies;
+
+    for (int i = 0; i < 7668; ++i) {
+        TestMovies.testPushBackforTestingOnly(TestMovies.getallMoviesmovieForTestingOnly(i));
+    }
+
+    TestMovies.SortRecommendedMoviesbyRelease();
+
+    EXPECT_EQ(TestMovies.getMovieTestingOnly(0).getReleaseYear(), 2020);
+}
+
+
+TEST(ReleaseSortTest, findlowestTestRelease) {
+    Movies TestMovies;
+
+    for (int i = 0; i < 7668; ++i) {
+        TestMovies.testPushBackforTestingOnly(TestMovies.getallMoviesmovieForTestingOnly(i));
+    }
+
+    TestMovies.SortRecommendedMoviesbyRelease();
+
+    EXPECT_EQ(TestMovies.getMovieTestingOnly(7667).getReleaseYear(), 1980);
+}
+
+
 TEST(DoesStarActorExistTests, JohnRitterTest) {
     Movies TestMovies1; 
     string actor = "John Ritter";
@@ -353,6 +427,7 @@ TEST(DoesDirectorExistTests, NotInallMovies2) {
 
     EXPECT_EQ(TestMovies5.doesDirectorExist(director), false);
 }
+
 
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
