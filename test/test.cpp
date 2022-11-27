@@ -332,25 +332,6 @@ TEST(PrintRecommendedMoviesTests, NotFullPageMovies) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 TEST(ReleaseSortTest, findHighestRelease) {
     Movies TestMovies;
 
@@ -374,6 +355,77 @@ TEST(ReleaseSortTest, findlowestTestRelease) {
     TestMovies.SortRecommendedMoviesbyRelease();
 
     EXPECT_EQ(TestMovies.getMovieTestingOnly(7667).getReleaseYear(), 1980);
+}
+
+
+TEST(DoesStarActorExistTests, JohnRitterTest) {
+    Movies TestMovies1; 
+    string actor = "John Ritter";
+
+    EXPECT_EQ(TestMovies1.doesActorExist(actor), true);
+}
+
+TEST(DoesStarActorExistTests, SiyabongaMabasoTest) {
+    Movies TestMovies2; 
+    string actor = "Siyabonga Mabaso";
+
+    EXPECT_EQ(TestMovies2.doesActorExist(actor), true);
+}
+
+TEST(DoesStarActorExistTests, RainerWernerFassbinderTest) {
+    Movies TestMovies3; 
+    string actor = "Rainer Werner Fassbinder";
+
+    EXPECT_EQ(TestMovies3.doesActorExist(actor), true);
+}
+
+TEST(DoesStarActorExistTests, NotInallMovies1) {
+    Movies TestMovies4; 
+    string actor = "Camille Lacroix";
+
+    EXPECT_EQ(TestMovies4.doesActorExist(actor), false);
+}
+
+TEST(DoesStarActorExistTests, NotInallMovies2) {
+    Movies TestMovies5; 
+    string actor = "Theo Fernandez";
+
+    EXPECT_EQ(TestMovies5.doesActorExist(actor), false);
+}
+
+TEST(DoesDirectorExistTests, JohnPatrickShanleyTest) {
+    Movies TestMovies1; 
+    string director = "John Patrick Shanley";
+
+    EXPECT_EQ(TestMovies1.doesDirectorExist(director), true);
+}
+
+TEST(DoesDirectorExistTests, CurtisHansonTest) {
+    Movies TestMovies2; 
+    string director = "Curtis Hanson";
+
+    EXPECT_EQ(TestMovies2.doesDirectorExist(director), true);
+}
+
+TEST(DoesDirectorExistTests, SpikeLeeTest) {
+    Movies TestMovies3; 
+    string director = "Spike Lee";
+
+    EXPECT_EQ(TestMovies3.doesDirectorExist(director), true);
+}
+
+TEST(DoesDirectorExistTests, NotInallMovies1) {
+    Movies TestMovies4; 
+    string director = "Andrea Sembrana";
+
+    EXPECT_EQ(TestMovies4.doesDirectorExist(director), false);
+}
+
+TEST(DoesDirectorExistTests, NotInallMovies2) {
+    Movies TestMovies5; 
+    string director = "Eddie Nguyen";
+
+    EXPECT_EQ(TestMovies5.doesDirectorExist(director), false);
 }
 
 

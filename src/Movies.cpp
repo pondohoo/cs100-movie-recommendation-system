@@ -243,18 +243,34 @@ Movie Movies::getMovie(string movieName)
 bool Movies::doesActorExist(string actorName)
 {
     // this is here to make function fail if it is called before it is implemented 
-    assert(0==1);
+    // assert(0==1);
     // iterate through allMovies until a Movie object with the actor actorName is found  
     // once it is found, immediately return true 
     // if it iterates through all of allMovies and it is still not found, return false
+
+    for (int i = 0; i < allMovies.size(); ++i) {
+        if (allMovies.at(i).getStarringActor() == actorName) {
+            return true;
+        }
+    }
+
+    return false;
 }
 bool Movies::doesDirectorExist(string directorName)
 {
     // this is here to make function fail if it is called before it is implemented 
-    assert(0==1);
+    // assert(0==1);
     // iterate through allMovies until a Movie object with the director directorName is found  
     // once it is found, immediately return true 
     // if it iterates through all of allMovies and it is still not found, return false
+
+    for (int i = 0; i < allMovies.size(); ++i) {
+        if (allMovies.at(i).getDirector() == directorName) {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 void Movies::generateRecommendations(string basisName, int basis)
