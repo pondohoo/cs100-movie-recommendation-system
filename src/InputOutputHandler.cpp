@@ -33,6 +33,7 @@ int InputOutputHandler::handleIntroOptions()
             }
         }
     }
+    cout << endl;
     return option;
     
 }
@@ -40,34 +41,172 @@ int InputOutputHandler::handleIntroOptions()
 
 string InputOutputHandler::handleNameRecommendationOption(Movies& movieRecommendationInterface)
 {
-    // this is just until function is implemented, so it will fail if it is called
-    // assert(0==1);
     // returns the name the user chose for recommendation
+    cout << "Enter a movie name for a similar movie recommendation" << endl;
+    string movieName = "";
+    cin >> movieName;
+    cout << endl;
+    while(1)
+    {
+        if(cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(),'\n');
+            cout << "Movie not found!" << endl;
+            cout << "Enter a movie name for a similar movie recommendation" << endl;
+            cin >> movieName;
+            cout << endl;
+        }
+        if(!cin.fail())
+        {
+            Movie currMovie = movieRecommendationInterface.getMovie(movieName);
+            if (currMovie.getName() != "N/A")
+            {
+                break;
+            }
+            cout << "Movie not found!" << endl;
+            cout << "Enter a movie name for a similar movie recommendation" << endl;
+            cin >> movieName;
+            cout << endl;
+        }
+    }
+    return movieName;
+
 }
+
+
 string InputOutputHandler::handleGenreRecommendationOption(Movies& movieRecommendationInterface)
 {
-    // this is just until function is implemented, so it will fail if it is called
-    // assert(0==1);
     // displays genres available for selection:
-    // Drama, Adventure, Action, Comedy, Horror, Biography, Crime, Western, Fantasy, Animation, Thriller, Romance, Mystery, 
-    // Sci-Fi, Sport, Musical
+    vector<string> genres;
+    genres.push_back("Drama"); 
+    genres.push_back("Adventure");
+    genres.push_back("Action");
+    genres.push_back("Comedy");
+    genres.push_back("Horror");
+    genres.push_back("Biography");
+    genres.push_back("Crime");
+    genres.push_back("Western");
+    genres.push_back("Fantasy");
+    genres.push_back("Animation"); 
+    genres.push_back("Thriller");
+    genres.push_back("Romance");
+    genres.push_back("Mystery");
+    genres.push_back("Sci-Fi");
+    genres.push_back("Sport");
+    genres.push_back("Musical");
 
+    cout << "List of available genres:" << endl;
+    for (unsigned int i = 0; i < genres.size() - 1; ++i)
+    {
+        cout << genres.at(i) << ", ";
+        if (i > 0 && i % 5==0)
+        {
+            cout << endl;
+        }
+    }
+    cout << genres.at(genres.size()-1) << endl;
+    cout << endl;
+    cout << "Please enter a genre from the list" << endl;
+    string userGenre = "";
+    cin >> userGenre;
     // validate if user entered a genre from the list
-
+    while(1)
+    {
+        if(cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(),'\n');
+            cout << "Please enter a valid option" << endl;
+            cin >> userGenre;
+        }
+        if(!cin.fail())
+        {
+            // iterate through genre list and check if userGenre is in list
+            for (unsigned int i = 0; i < genres.size(); ++i)
+            {
+                if (userGenre == genres.at(i))
+                {
+                    cout << endl << endl;
+                    return userGenre;
+                }
+            }
+            cout << "Please enter a valid option" << endl;
+            cin >> userGenre;
+        }
+    }
      // returns the genre the user chose for recommendation
+     return userGenre;
 
 }
 string InputOutputHandler::handleActorRecommendationOption(Movies& movieRecommendationInterface)
 {
-    // this is just until function is implemented, so it will fail if it is called
-    // assert(0==1);
     // returns the actor the user chose for recommendation
+    cout << "Enter an actor (full name) to get a recommendation on movies they starred in" << endl;
+    string actorName;
+    cin >> actorName;
+    cout << endl;
+    while(1)
+    {
+        if(cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(),'\n');
+            cout << "Actor not found!" << endl;
+            cout << "Enter an actor (full name) to get a recommendation on movies they starred in" << endl;
+            cin >> actorName;
+            cout << endl;
+            
+        }
+        if(!cin.fail())
+        {
+            if (movieRecommendationInterface.doesActorExist(actorName))
+            {
+                break;
+            }
+            cout << "Actor not found!" << endl;
+            cout << "Enter an actor (full name) to get a recommendation on movies they starred in" << endl;
+            cin >> actorName;
+            cout << endl;
+            
+        }
+    }
+    return actorName;
 }
+
 string InputOutputHandler::handleDirectorRecommendationOption(Movies& movieRecommendationInterface)
 {
-    // this is just until function is implemented, so it will fail if it is called
-    // assert(0==1);
     // returns the director the user chose for recommendation
+    cout << "Enter a director (full name) to get a recommendation on movies they directed" << endl;
+    string directorName;
+    cin >> directorName;
+    cout << endl;
+    while(1)
+    {
+        if(cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(),'\n');
+            cout << "Director not found!" << endl;
+            cout << "Enter a director (full name) to get a recommendation on movies they directed" << endl;
+            cin >> directorName;
+            cout << endl;
+            
+        }
+        if(!cin.fail())
+        {
+            if (movieRecommendationInterface.doesDirectorExist(directorName))
+            {
+                break;
+            }
+            cout << "Direcotr not found!" << endl;
+            cout << "Enter a director (full name) to get a recommendation on movies they directed" << endl;
+            cin >> directorName;
+            cout << endl;
+            
+        }
+    }
+    return directorName;
 }
 
 
@@ -77,31 +216,100 @@ void InputOutputHandler::printRecommendedMoviesHeader()
 {
     cout << "Here is a list of movies you might like:" << endl;
 }
-void InputOutputHandler::printEndMessage()
+
+
+
+
+int InputOutputHandler::handleEndMessage()
 {
     cout << "Thank you for using the Movie Recommender!" << endl;
+    cout << "Would you like another recommendation?" << endl;
+    cout << "1. Yes" << endl;
+    cout << "2. No" << endl;
+
+    int decision = 0;
+    cin >> decision;
+    while(1)
+        {
+            if(cin.fail())
+            {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                cout << "Please enter a valid option" << endl;
+                cin >> decision;
+            }
+            if(!cin.fail())
+            {
+                if (decision == 1 || decision == 2)
+                {
+                    break;
+                }
+                else
+                {
+                    cout << "Please enter a valid option" << endl;
+                    cin >> decision;
+                }
+            }
+        }
+        cout << endl << endl << endl;
+    return decision;
 }
+
+int InputOutputHandler::handleFinalDecision()
+{
+    cout << "1. View next page of recommendations" << endl;
+    cout << "2. Sort the list" << endl;
+    cout << "3. Quit" << endl;
+    int decision = 3;
+    cin >> decision;
+    while(1)
+        {
+            if(cin.fail())
+            {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                cout << "Please enter a valid option" << endl;
+                cin >> decision;
+            }
+            if(!cin.fail())
+            {
+                if (decision > 0 && decision < 4)
+                {
+                    break;
+                }
+                else
+                {
+                    cout << "Please enter a valid option" << endl;
+                    cin >> decision;
+                }
+            }
+        }
+        cout << endl;
+        return decision;
+}
+
 void InputOutputHandler::printSortOptionHeader(int option)
 {
+    cout << endl;
     if (option == 1)
     {
         // sorted by name message
-        cout << "Here are the Movies sorted by name:\n";
+        cout << "Here are the recommmended movies sorted by name:\n";
     }
     if (option == 2)
     {
         // sorted by release year message
-        cout << "Here are the Movies sorted by release year:\n";
+        cout << "Here are the recommended movies sorted by release year:\n";
     }
     if (option == 3)
     {
         // sorted by popularity message
-        cout << "Here are the Movies sorted by popularity:\n";
+        cout << "Here are the recommended movies sorted by popularity:\n";
     }
     if (option == 4)
     {
         // sorted by rating message
-        cout << "Here are the Movies sorted by rating:\n";
+        cout << "Here are the recommended movies sorted by rating:\n";
     }
 }
 
@@ -135,6 +343,7 @@ int InputOutputHandler::handleSpecificMovieOptions()
             }
         }
     }
+    cout << endl << endl;
     return option;
 }
 
@@ -144,12 +353,13 @@ int InputOutputHandler::handleSpecificMovieOptions()
 
 int InputOutputHandler::handleSortOptions()
 {
-    cout << "Would you like to sort this list?\n";
-    cout << "1. Yes\n";
-    cout << "2. No\n";
-    int initialOption;
-    cin >> initialOption;
-    // validate input
+    cout << "Please enter on what basis you would like the list sorted (1-4):\n";
+    cout << "1. Alphabetical order\n";
+    cout << "2. Release year\n";
+    cout << "3. Popularity\n";
+    cout << "4. Rating\n";
+    int sortingChoiceOption = 1;
+    cin >> sortingChoiceOption;
     while(1)
     {
         if(cin.fail())
@@ -157,53 +367,20 @@ int InputOutputHandler::handleSortOptions()
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(),'\n');
             cout << "Please enter a valid option" << endl;
-            cin >> initialOption;
+            cin >> sortingChoiceOption;
         }
         if(!cin.fail())
         {
-            if (initialOption > 0 && initialOption < 3)
+            if (sortingChoiceOption > 0 && sortingChoiceOption < 5)
             {
                 break;
             }
             else
             {
                 cout << "Please enter a valid option" << endl;
-                cin >> initialOption;
+                cin >> sortingChoiceOption;
             }
         }
     }
-    if (initialOption == 1)
-    {
-        cout << "Please enter on what basis you would like the list sorted (1-4):\n";
-        cout << "1. Alphabetical order\n";
-        cout << "2. Release year\n";
-        cout << "3. Popularity\n";
-        cout << "4. Rating\n";
-        int sortingChoiceOption;
-        while(1)
-            {
-                if(cin.fail())
-                {
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(),'\n');
-                    cout << "Please enter a valid option" << endl;
-                    cin >> sortingChoiceOption;
-                }
-                if(!cin.fail())
-                {
-                    if (sortingChoiceOption > 0 && sortingChoiceOption < 5)
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        cout << "Please enter a valid option" << endl;
-                        cin >> sortingChoiceOption;
-                    }
-                }
-            }
-            return sortingChoiceOption;
-
-    }
-     return -1; // proceed to end program in main
+    return sortingChoiceOption;
 }

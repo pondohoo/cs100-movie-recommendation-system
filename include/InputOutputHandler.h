@@ -12,10 +12,11 @@ class InputOutputHandler {
         // handles invalid input and returns valid user input
         int handleIntroOptions();
         int handleSortOptions();
+        int handleSpecificMovieOptions();
+        int handleEndMessage();
+        int handleFinalDecision();
 
         void printRecommendedMoviesHeader();
-        int handleSpecificMovieOptions();
-        void printEndMessage();
         void printSortOptionHeader(int option);
 
         string handleNameRecommendationOption(Movies& movieRecommendationInterface);

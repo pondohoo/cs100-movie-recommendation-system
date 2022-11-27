@@ -115,6 +115,101 @@ TEST(RecommendedMoviesGenreTests, StanleyKubrickTest) {
  
 }
 
+TEST(RecommendedMoviesGenreTests, actionTest) {
+   Movies TestMovies1;
+   string genre = "Action";
+  
+   TestMovies1.generateRecommendations(genre, 1);
+ 
+   EXPECT_EQ(TestMovies1.getMovieTestingOnly(0).getName(), "Star Wars: Episode V - The Empire Strikes Back");
+   EXPECT_EQ(TestMovies1.getMovieTestingOnly(1).getName(), "The Blues Brothers");
+   EXPECT_EQ(TestMovies1.getMovieTestingOnly(2).getName(), "Superman II");
+   EXPECT_EQ(TestMovies1.getMovieTestingOnly(3).getName(), "Any Which Way You Can");
+   EXPECT_EQ(TestMovies1.getMovieTestingOnly(4).getName(), "The Final Countdown");
+   EXPECT_EQ(TestMovies1.getMovieTestingOnly(5).getName(), "Raise the Titanic");
+   EXPECT_EQ(TestMovies1.getMovieTestingOnly(6).getName(), "Smokey and the Bandit II");
+   EXPECT_EQ(TestMovies1.getMovieTestingOnly(7).getName(), "The Stunt Man");
+   EXPECT_EQ(TestMovies1.getMovieTestingOnly(8).getName(), "The Island");
+   EXPECT_EQ(TestMovies1.getMovieTestingOnly(9).getName(), "The Nude Bomb");
+ 
+   EXPECT_EQ(TestMovies1.sizeofRecommendedForTestingOnly(), 1705);
+ 
+}
+ 
+TEST(RecommendedMoviesGenreTests, comedyTest) {
+   Movies TestMovies2;
+   string genre = "Comedy";
+  
+   TestMovies2.generateRecommendations(genre, 1);
+ 
+   EXPECT_EQ(TestMovies2.getMovieTestingOnly(0).getName(), "Airplane!");
+   EXPECT_EQ(TestMovies2.getMovieTestingOnly(1).getName(), "Caddyshack");
+   EXPECT_EQ(TestMovies2.getMovieTestingOnly(2).getName(), "9 to 5");
+   EXPECT_EQ(TestMovies2.getMovieTestingOnly(3).getName(), "Stir Crazy");
+   EXPECT_EQ(TestMovies2.getMovieTestingOnly(4).getName(), "Little Darlings");
+   EXPECT_EQ(TestMovies2.getMovieTestingOnly(5).getName(), "My Bodyguard");
+   EXPECT_EQ(TestMovies2.getMovieTestingOnly(6).getName(), "Seems Like Old Times");
+   EXPECT_EQ(TestMovies2.getMovieTestingOnly(7).getName(), "Private Benjamin");
+   EXPECT_EQ(TestMovies2.getMovieTestingOnly(8).getName(), "The Hollywood Knights");
+   EXPECT_EQ(TestMovies2.getMovieTestingOnly(9).getName(), "Motel Hell");
+ 
+   EXPECT_EQ(TestMovies2.sizeofRecommendedForTestingOnly(), 2245);
+ 
+}
+ 
+TEST(RecommendedMoviesGenreTests, dramaTest) {
+   Movies TestMovies3;
+   string genre = "Drama";
+  
+   TestMovies3.generateRecommendations(genre, 1);
+ 
+   EXPECT_EQ(TestMovies3.getMovieTestingOnly(0).getName(), "The Shining");
+   EXPECT_EQ(TestMovies3.getMovieTestingOnly(1).getName(), "Ordinary People");
+   EXPECT_EQ(TestMovies3.getMovieTestingOnly(2).getName(), "Somewhere in Time");
+   EXPECT_EQ(TestMovies3.getMovieTestingOnly(3).getName(), "Fame");
+   EXPECT_EQ(TestMovies3.getMovieTestingOnly(4).getName(), "Urban Cowboy");
+   EXPECT_EQ(TestMovies3.getMovieTestingOnly(5).getName(), "Cattle Annie and Little Britches");
+   EXPECT_EQ(TestMovies3.getMovieTestingOnly(6).getName(), "The Jazz Singer");
+   EXPECT_EQ(TestMovies3.getMovieTestingOnly(7).getName(), "Breaker Morant");
+   EXPECT_EQ(TestMovies3.getMovieTestingOnly(8).getName(), "The Competition");
+   EXPECT_EQ(TestMovies3.getMovieTestingOnly(9).getName(), "Honeysuckle Rose");
+ 
+   EXPECT_EQ(TestMovies3.sizeofRecommendedForTestingOnly(), 1518);
+ 
+}
+ 
+TEST(RecommendedMoviesGenreTests, GenreNotInListTest) {
+   Movies TestMovies4;
+   string genre = "Fiction";
+ 
+   TestMovies4.generateRecommendations(genre, 1);
+ 
+   EXPECT_EQ(TestMovies4.sizeofRecommendedForTestingOnly(), 0);
+}
+
+TEST(PrintRecommendedMoviesTests, NoMoviesFound) {
+    Movies TestMovies;
+    for (int i = 0; i < 10; ++i) {
+        TestMovies.testPushBackforTestingOnly(TestMovies.getallMoviesmovieForTestingOnly(i));
+    }
+    EXPECT_EQ(TestMovies.PrintRecommendedMovies(5), 0);
+}
+TEST(PrintRecommendedMoviesTests, FullPage10Movies) {
+    Movies TestMovies;
+    for (int i = 0; i < 100; ++i) {
+        TestMovies.testPushBackforTestingOnly(TestMovies.getallMoviesmovieForTestingOnly(i));
+    }
+    EXPECT_EQ(TestMovies.PrintRecommendedMovies(0), 10);
+}
+TEST(PrintRecommendedMoviesTests, NotFullPageMovies) {
+    Movies TestMovies;
+    for (int i = 0; i < 5; ++i) {
+        TestMovies.testPushBackforTestingOnly(TestMovies.getallMoviesmovieForTestingOnly(i));
+    }
+    EXPECT_EQ(TestMovies.PrintRecommendedMovies(0), 5);
+}
+
+
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
