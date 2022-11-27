@@ -55,10 +55,9 @@ class Movies {
         // helper function that is called by ratingsort function
         // swaps the least to the top of the vector with heap property
         void heapify_Rating(int , int );
-
         void heapify_Release(int n, int i);
-
         void heapify_Popularity(int n, int i);
+
         // called from generateRecommendations, initializes recommendedMovies list based
         // on genre parameter
         void generateRecommendationsGenre(string genreName);

@@ -1,12 +1,32 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
+set(This MovieRecommendations)
 
-ADD_SUBDIRECTORY(googletest)
+project(${This} C CXX)
+
+set(CMAKE_C_STANDARD 99)
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+
+enable_testing()
+
+add_subdirectory(googletest)
 
 
-ADD_EXECUTABLE(test
-    test.cpp
+set(Headers
+    ./include/DatasetAccessor.h
+    ./include/Movie.h
+    ./include/Movies.h
+    ./include/InputOutputHandler.h
 )
+set(Sources
+    ./src/Movie.cpp
+    ./src/Movies.cpp
+    ./src/DatasetAccessor.cpp
+    ./src/InputOutputHandler.cpp
+)
+add_library(${This} STATIC ${Sources} ${Headers})
+add_executable(${This} ${Sources})
 
-TARGET_LINK_LIBRARIES(test gtest)
-TARGET_COMPILE_DEFINITIONS(test PRIVATE gtest_disable_pthreads=ON)
 
+# looks for the test subdirectory and runs the child CMakeLists
+add_subdirectory(test) 
+add_subdirectory(mainExecutable) 
