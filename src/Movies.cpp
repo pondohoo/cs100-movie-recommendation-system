@@ -75,7 +75,7 @@ void Movies::SortRecommendedMoviesbyName(){
     vector<int> index;
     for (int i=0; i<this->recommendedMovies.size(); i++){
         name.push_back(recommendedMovies[i].getName());
-        index.push_back(i);
+        
     }
 
     sort(name.begin(),name.end());
