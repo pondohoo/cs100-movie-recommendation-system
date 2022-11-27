@@ -319,6 +319,41 @@ TEST(DoesStarActorExistTests, NotInallMovies2) {
     EXPECT_EQ(TestMovies5.doesActorExist(actor), false);
 }
 
+TEST(DoesDirectorExistTests, JohnPatrickShanleyTest) {
+    Movies TestMovies1; 
+    string director = "John Patrick Shanley";
+
+    EXPECT_EQ(TestMovies1.doesDirectorExist(director), true);
+}
+
+TEST(DoesDirectorExistTests, CurtisHansonTest) {
+    Movies TestMovies2; 
+    string director = "Curtis Hanson";
+
+    EXPECT_EQ(TestMovies2.doesDirectorExist(director), true);
+}
+
+TEST(DoesDirectorExistTests, SpikeLeeTest) {
+    Movies TestMovies3; 
+    string director = "Spike Lee";
+
+    EXPECT_EQ(TestMovies3.doesDirectorExist(director), true);
+}
+
+TEST(DoesDirectorExistTests, NotInallMovies1) {
+    Movies TestMovies4; 
+    string director = "Andrea Sembrana";
+
+    EXPECT_EQ(TestMovies4.doesDirectorExist(director), false);
+}
+
+TEST(DoesDirectorExistTests, NotInallMovies2) {
+    Movies TestMovies5; 
+    string director = "Eddie Nguyen";
+
+    EXPECT_EQ(TestMovies5.doesDirectorExist(director), false);
+}
+
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
