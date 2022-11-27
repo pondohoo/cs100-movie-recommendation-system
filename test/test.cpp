@@ -262,11 +262,6 @@ TEST(RecommendedMoviesGenreTests, GenreNotInListTest) {
    EXPECT_EQ(TestMovies4.sizeofRecommendedForTestingOnly(), 0);
 }
 
-int main(int argc, char **argv) {
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-}
-
 TEST(PrintRecommendedMoviesTests, NoMoviesFound) {
     Movies TestMovies;
     for (int i = 0; i < 10; ++i) {
@@ -287,4 +282,44 @@ TEST(PrintRecommendedMoviesTests, NotFullPageMovies) {
         TestMovies.testPushBackforTestingOnly(TestMovies.getallMoviesmovieForTestingOnly(i));
     }
     EXPECT_EQ(TestMovies.PrintRecommendedMovies(0), 5);
+}
+
+TEST(DoesStarActorExistTests, JohnRitterTest) {
+    Movies TestMovies1; 
+    string actor = "John Ritter";
+
+    EXPECT_EQ(TestMovies1.doesActorExist(actor), true);
+}
+
+TEST(DoesStarActorExistTests, SiyabongaMabasoTest) {
+    Movies TestMovies2; 
+    string actor = "Siyabonga Mabaso";
+
+    EXPECT_EQ(TestMovies2.doesActorExist(actor), true);
+}
+
+TEST(DoesStarActorExistTests, RainerWernerFassbinderTest) {
+    Movies TestMovies3; 
+    string actor = "Rainer Werner Fassbinder";
+
+    EXPECT_EQ(TestMovies3.doesActorExist(actor), true);
+}
+
+TEST(DoesStarActorExistTests, NotInallMovies1) {
+    Movies TestMovies4; 
+    string actor = "Camille Lacroix";
+
+    EXPECT_EQ(TestMovies4.doesActorExist(actor), false);
+}
+
+TEST(DoesStarActorExistTests, NotInallMovies2) {
+    Movies TestMovies5; 
+    string actor = "Theo Fernandez";
+
+    EXPECT_EQ(TestMovies5.doesActorExist(actor), false);
+}
+
+int main(int argc, char **argv) {
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }
