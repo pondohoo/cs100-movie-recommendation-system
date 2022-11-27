@@ -44,17 +44,18 @@ string InputOutputHandler::handleNameRecommendationOption(Movies& movieRecommend
     // returns the name the user chose for recommendation
     cout << "Enter a movie name for a similar movie recommendation" << endl;
     string movieName = "";
-    cin >> movieName;
+    cin.ignore(numeric_limits<streamsize>::max(),'\n');
+    getline(cin, movieName);
     cout << endl;
     while(1)
     {
         if(cin.fail())
         {
-            cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(),'\n');
+            cin.clear();
             cout << "Movie not found!" << endl;
             cout << "Enter a movie name for a similar movie recommendation" << endl;
-            cin >> movieName;
+            getline(cin, movieName);
             cout << endl;
         }
         if(!cin.fail())
@@ -66,7 +67,7 @@ string InputOutputHandler::handleNameRecommendationOption(Movies& movieRecommend
             }
             cout << "Movie not found!" << endl;
             cout << "Enter a movie name for a similar movie recommendation" << endl;
-            cin >> movieName;
+            getline(cin, movieName);
             cout << endl;
         }
     }
@@ -143,18 +144,19 @@ string InputOutputHandler::handleActorRecommendationOption(Movies& movieRecommen
 {
     // returns the actor the user chose for recommendation
     cout << "Enter an actor (full name) to get a recommendation on movies they starred in" << endl;
-    string actorName;
-    cin >> actorName;
+    string actorName = "";
+    cin.ignore(numeric_limits<streamsize>::max(),'\n');
+    getline(cin, actorName);
     cout << endl;
     while(1)
     {
         if(cin.fail())
         {
-            cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(),'\n');
+            cin.clear();
             cout << "Actor not found!" << endl;
             cout << "Enter an actor (full name) to get a recommendation on movies they starred in" << endl;
-            cin >> actorName;
+            getline(cin, actorName);
             cout << endl;
             
         }
@@ -166,7 +168,7 @@ string InputOutputHandler::handleActorRecommendationOption(Movies& movieRecommen
             }
             cout << "Actor not found!" << endl;
             cout << "Enter an actor (full name) to get a recommendation on movies they starred in" << endl;
-            cin >> actorName;
+            getline(cin, actorName);
             cout << endl;
             
         }
@@ -179,7 +181,8 @@ string InputOutputHandler::handleDirectorRecommendationOption(Movies& movieRecom
     // returns the director the user chose for recommendation
     cout << "Enter a director (full name) to get a recommendation on movies they directed" << endl;
     string directorName;
-    cin >> directorName;
+    cin.ignore(numeric_limits<streamsize>::max(),'\n');
+    getline(cin, directorName);
     cout << endl;
     while(1)
     {
@@ -189,7 +192,7 @@ string InputOutputHandler::handleDirectorRecommendationOption(Movies& movieRecom
             cin.ignore(numeric_limits<streamsize>::max(),'\n');
             cout << "Director not found!" << endl;
             cout << "Enter a director (full name) to get a recommendation on movies they directed" << endl;
-            cin >> directorName;
+            getline(cin, directorName);
             cout << endl;
             
         }
@@ -199,9 +202,9 @@ string InputOutputHandler::handleDirectorRecommendationOption(Movies& movieRecom
             {
                 break;
             }
-            cout << "Direcotr not found!" << endl;
+            cout << "Director not found!" << endl;
             cout << "Enter a director (full name) to get a recommendation on movies they directed" << endl;
-            cin >> directorName;
+            getline(cin, directorName);
             cout << endl;
             
         }
