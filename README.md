@@ -14,8 +14,10 @@ As university's students, we spend most of our time working on projects, assignm
 To build our movie recommender, we used C++, a movies csv dataset, and a movie recommendation algorithm. Group members pushed their parts to Github as Pull Requests, and other group members reviewed said pull requests
 
 The input of this application allows users to type in 1 genre, 1 subgenre, and a movie name for a recommendation. It also lets user selects next page options and sorting options for the generated list of recommended movies
+
 Genres include:
 * Drama, Adventure, Action, Comedy, Horror, Biography, Crime, Western, Fantasy, Animation, Thriller, Romance, Mystery, Sci-Fi, Sport, and Musical
+
 Subgenres include:
 * Director and Starring Actor
 
