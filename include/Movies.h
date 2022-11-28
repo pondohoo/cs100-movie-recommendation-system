@@ -30,9 +30,6 @@ class Movies {
         void SortRecommendedMoviesbyPopularity();
         // utilize the heap sort algorithm to sort the recommendedMovies vector by rating from greatest to least
         void SortRecommendedMoviesbyRating();
-        void PrintAvailableGenres();
-        void PrintAvailableSubGenres();
-        void generateRecommendations();
         
         // get a Movie object from allMovies based on name
         Movie getMovie(string movieName);
