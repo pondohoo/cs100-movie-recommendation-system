@@ -41,11 +41,6 @@ while (anotherRecommendation == 1)
         // get the movie object from the list
         Movie currMovie = movieRecommendationInterface.getMovie(movieName);
 
-        // validate that the movie was found
-        if (currMovie.getName() == "N/A")
-        {
-            assert(currMovie.getName() != "N/A");
-        }
         // check on what basis the user would like to see a recommendation for the specific movie
         int movieGenreSubgenreChoice = iohandler.handleSpecificMovieOptions();
 
@@ -74,36 +69,35 @@ while (anotherRecommendation == 1)
     else if (option == 2)
     {
         
-        //genreName = iohandler.handleGenreRecommendationOption(movieRecommendationInterface);
+        genreName = iohandler.handleGenreRecommendationOption(movieRecommendationInterface);
         
         // generate recommendations based on genre
-        //movieRecommendationInterface.generateRecommendations(genreName, 1);
-        
+        movieRecommendationInterface.generateRecommendations(genreName, 1);
 
-        
     }
 
 
     //recommend based on actor
     else if (option == 3)
     {
-        //actorName = iohandler.handleActorRecommendationOption(movieRecommendationInterface);
+        actorName = iohandler.handleActorRecommendationOption(movieRecommendationInterface);
        
        // generate recommendations based on actor
-       //movieRecommendationInterface.generateRecommendations(actorName, 2);
-       
-        
+       movieRecommendationInterface.generateRecommendations(actorName, 2);  
     }
     // recommend based on director
     else if (option == 4)
     {
-        //directorName = iohandler.handleDirectorRecommendationOption(movieRecommendationInterface);
+        directorName = iohandler.handleDirectorRecommendationOption(movieRecommendationInterface);
         
         
         // generate recommendations based on director
-        //movieRecommendationInterface.generateRecommendations(directorName, 3);
+        movieRecommendationInterface.generateRecommendations(directorName, 3);
     }
-    // print recommended movie subset
+
+
+
+    // print recommended movie list
     iohandler.printRecommendedMoviesHeader();
     movieRecommendationInterface.PrintRecommendedMovies(0);
 
@@ -138,7 +132,7 @@ while (anotherRecommendation == 1)
                 {
                     // sort the list by name
                     iohandler.printSortOptionHeader(sortOption);
-                    //movieRecommendationInterface.SortRecommendedMoviesbyName();
+                    movieRecommendationInterface.SortRecommendedMoviesbyName();
 
                     // call print recommended list function on movieRecommendationInterface
                     movieRecommendationInterface.PrintRecommendedMovies(0);
@@ -147,7 +141,7 @@ while (anotherRecommendation == 1)
                 {
                     // sort the list by release date
                     iohandler.printSortOptionHeader(sortOption);
-                    //movieRecommendationInterface.SortRecommendedMoviesbyRelease();
+                    movieRecommendationInterface.SortRecommendedMoviesbyRelease();
 
 
                     // call print recommended list function on movieRecommendationInterface
@@ -157,7 +151,7 @@ while (anotherRecommendation == 1)
                 {
                     // sort the list by popularity
                     iohandler.printSortOptionHeader(sortOption);
-                    //movieRecommendationInterface.SortRecommendedMoviesbyPopularity();
+                    movieRecommendationInterface.SortRecommendedMoviesbyPopularity();
 
                     
                     // call print recommended list function on movieRecommendationInterface
