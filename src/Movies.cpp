@@ -180,10 +180,6 @@ void Movies::generateRecommendations(string basisName, int basis)
 
 void Movies::generateRecommendationsGenre(string genreName)
 {
-    // this is just until function is implemented, so it will fail if it is called
-    // assert(0==1);
-
-
     // search through allMovies for all Movie objects that have the genre given by the parameter genreName
     // if there is a Movie object with that genre, add it to recommendedMovies 
 
@@ -197,19 +193,18 @@ void Movies::generateRecommendationsGenre(string genreName)
 
 void Movies::generateRecommendationsActor(string actorName)
 {
-    // this is just until function is implemented, so it will fail if it is called
-    // assert(0==1);
-
     // search through allMovies for all Movie objects that have the actor given by the parameter actorName
     // if there is a Movie object with that actor, add it to recommendedMovies 
+    for (int i = 0; i < allMovies.size(); ++i) {
+        if (allMovies.at(i).getStarringActor() == actorName) {
+            recommendedMovies.push_back(allMovies.at(i));
+        }
+    }
 }
 
 
 void Movies::generateRecommendationsDirector(string directorName)
 {
-    // this is just until function is implemented, so it will fail if it is called
-    // assert(0==1);
-
     // search through allMovies for all Movie objects that have the director name given by the parameter directorName
     // if there is a Movie object with that director, add it to recommendedMovies 
 
