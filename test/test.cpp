@@ -191,6 +191,17 @@ TEST(PopularitySortTest, sortfirst10MoviesByPopularity) {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
 TEST(GetMovieTests, MovieIsIn) {
     Movies TestMovies1;
 
@@ -235,6 +246,18 @@ TEST(GetMovieTests, MovieIsNotIn) {
     EXPECT_NE(TestMovies3.getMovie(testName3).getTotalVotes(), testMovie3.getTotalVotes());
     EXPECT_NE(TestMovies3.getMovie(testName3).getReleaseYear(), testMovie3.getReleaseYear());
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 TEST(RecommendedMoviesGenreTests, actionTest) {
    Movies TestMovies1;
@@ -307,6 +330,77 @@ TEST(RecommendedMoviesGenreTests, GenreNotInListTest) {
  
    EXPECT_EQ(TestMovies4.sizeofRecommendedForTestingOnly(), 0);
 }
+
+TEST(RecommendedMoviesDirectorTests, IrvinKershnerTest) {
+   Movies TestMovies1;
+   std::string Director = "Irvin Kershner";
+  
+   TestMovies1.generateRecommendations(Director, 3);
+ 
+   EXPECT_EQ(TestMovies1.getMovieTestingOnly(0).getName(), "Star Wars: Episode V - The Empire Strikes Back");
+   EXPECT_EQ(TestMovies1.getMovieTestingOnly(1).getName(), "Never Say Never Again");
+   EXPECT_EQ(TestMovies1.getMovieTestingOnly(2).getName(), "RoboCop 2");
+
+ 
+   EXPECT_EQ(TestMovies1.sizeofRecommendedForTestingOnly(), 3);
+ 
+}
+ 
+TEST(RecommendedMoviesDirectorTests, StanleyKubrickTest) {
+   Movies TestMovies2;
+   string Director = "Stanley Kubrick";
+  
+   TestMovies2.generateRecommendations(Director, 3);
+ 
+   EXPECT_EQ(TestMovies2.getMovieTestingOnly(0).getName(), "The Shining");
+   EXPECT_EQ(TestMovies2.getMovieTestingOnly(1).getName(), "Full Metal Jacket");
+   EXPECT_EQ(TestMovies2.getMovieTestingOnly(2).getName(), "Eyes Wide Shut");
+   
+ 
+   EXPECT_EQ(TestMovies2.sizeofRecommendedForTestingOnly(), 3);
+ 
+}
+
+
+TEST(RecommendedMoviesActorTests, DwayneJohnsonTest) {
+   Movies TestMovies1;
+   string Actor = "Dwayne Johnson";
+  
+   TestMovies1.generateRecommendations(Actor, 2);
+ 
+   EXPECT_EQ(TestMovies1.getMovieTestingOnly(0).getName(), "The Scorpion King");
+   EXPECT_EQ(TestMovies1.getMovieTestingOnly(1).getName(), "The Rundown");
+   EXPECT_EQ(TestMovies1.getMovieTestingOnly(2).getName(), "Walking Tall");
+
+ 
+   EXPECT_EQ(TestMovies1.sizeofRecommendedForTestingOnly(), 22);
+ 
+}
+ 
+TEST(RecommendedMoviesActorTests, ChrisPrattTest) {
+   Movies TestMovies2;
+   string Actor = "Chris Pratt";
+  
+   TestMovies2.generateRecommendations(Actor, 2);
+ 
+   EXPECT_EQ(TestMovies2.getMovieTestingOnly(0).getName(), "Guardians of the Galaxy");
+   EXPECT_EQ(TestMovies2.getMovieTestingOnly(1).getName(), "The Lego Movie");
+   EXPECT_EQ(TestMovies2.getMovieTestingOnly(2).getName(), "Jurassic World");
+   
+ 
+   EXPECT_EQ(TestMovies2.sizeofRecommendedForTestingOnly(), 6);
+ 
+}
+
+
+
+
+
+
+
+
+
+
 
 TEST(PrintRecommendedMoviesTests, NoMoviesFound) {
     Movies TestMovies;
