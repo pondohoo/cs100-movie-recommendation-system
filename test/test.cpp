@@ -83,7 +83,6 @@ TEST(MoviesVectorSetupTests, TestNumMovies) {
 
 }
 
-
 TEST(RatingSortTest, sortfirst10MoviesByRating) {
     Movies TestMovies1;
     
@@ -192,6 +191,17 @@ TEST(PopularitySortTest, sortfirst10MoviesByPopularity) {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
 TEST(GetMovieTests, MovieIsIn) {
     Movies TestMovies1;
 
@@ -212,9 +222,114 @@ TEST(GetMovieTests, MovieIsIn2) {
 
     string testName2 = "Immediate Family";
     Movie testMovie2("Immediate Family", "Drama", "Jonathan Kaplan", "Glenn Close", 6.0, 1500.0, 1989);
+
+    EXPECT_EQ(TestMovies2.getMovie(testName2).getName(), testMovie2.getName());
+    EXPECT_EQ(TestMovies2.getMovie(testName2).getGenre(), testMovie2.getGenre());
+    EXPECT_EQ(TestMovies2.getMovie(testName2).getDirector(), testMovie2.getDirector());
+    EXPECT_EQ(TestMovies2.getMovie(testName2).getStarringActor(), testMovie2.getStarringActor());
+    EXPECT_EQ(TestMovies2.getMovie(testName2).getRating(), testMovie2.getRating());
+    EXPECT_EQ(TestMovies2.getMovie(testName2).getTotalVotes(), testMovie2.getTotalVotes());
+    EXPECT_EQ(TestMovies2.getMovie(testName2).getReleaseYear(), testMovie2.getReleaseYear());
+}
+
+TEST(GetMovieTests, MovieIsNotIn) {
+    Movies TestMovies3;
+
+    string testName3 = "Free Guy";
+    Movie testMovie3("Free Guy", "Sci-Fi", "Shawn Levy", "Ryan Reynolds", 7.1, 15000.0, 2021);
+
+    EXPECT_NE(TestMovies3.getMovie(testName3).getName(), testMovie3.getName());
+    EXPECT_NE(TestMovies3.getMovie(testName3).getGenre(), testMovie3.getGenre());
+    EXPECT_NE(TestMovies3.getMovie(testName3).getDirector(), testMovie3.getDirector());
+    EXPECT_NE(TestMovies3.getMovie(testName3).getStarringActor(), testMovie3.getStarringActor());
+    EXPECT_NE(TestMovies3.getMovie(testName3).getRating(), testMovie3.getRating());
+    EXPECT_NE(TestMovies3.getMovie(testName3).getTotalVotes(), testMovie3.getTotalVotes());
+    EXPECT_NE(TestMovies3.getMovie(testName3).getReleaseYear(), testMovie3.getReleaseYear());
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+TEST(RecommendedMoviesGenreTests, actionTest) {
+   Movies TestMovies1;
+   string genre = "Action";
+  
+   TestMovies1.generateRecommendations(genre, 1);
+ 
+   EXPECT_EQ(TestMovies1.getMovieTestingOnly(0).getName(), "Star Wars: Episode V - The Empire Strikes Back");
+   EXPECT_EQ(TestMovies1.getMovieTestingOnly(1).getName(), "The Blues Brothers");
+   EXPECT_EQ(TestMovies1.getMovieTestingOnly(2).getName(), "Superman II");
+   EXPECT_EQ(TestMovies1.getMovieTestingOnly(3).getName(), "Any Which Way You Can");
+   EXPECT_EQ(TestMovies1.getMovieTestingOnly(4).getName(), "The Final Countdown");
+   EXPECT_EQ(TestMovies1.getMovieTestingOnly(5).getName(), "Raise the Titanic");
+   EXPECT_EQ(TestMovies1.getMovieTestingOnly(6).getName(), "Smokey and the Bandit II");
+   EXPECT_EQ(TestMovies1.getMovieTestingOnly(7).getName(), "The Stunt Man");
+   EXPECT_EQ(TestMovies1.getMovieTestingOnly(8).getName(), "The Island");
+   EXPECT_EQ(TestMovies1.getMovieTestingOnly(9).getName(), "The Nude Bomb");
+ 
+   EXPECT_EQ(TestMovies1.sizeofRecommendedForTestingOnly(), 1705);
+ 
+}
+ 
+TEST(RecommendedMoviesGenreTests, comedyTest) {
+   Movies TestMovies2;
+   string genre = "Comedy";
+  
+   TestMovies2.generateRecommendations(genre, 1);
+ 
+   EXPECT_EQ(TestMovies2.getMovieTestingOnly(0).getName(), "Airplane!");
+   EXPECT_EQ(TestMovies2.getMovieTestingOnly(1).getName(), "Caddyshack");
+   EXPECT_EQ(TestMovies2.getMovieTestingOnly(2).getName(), "9 to 5");
+   EXPECT_EQ(TestMovies2.getMovieTestingOnly(3).getName(), "Stir Crazy");
+   EXPECT_EQ(TestMovies2.getMovieTestingOnly(4).getName(), "Little Darlings");
+   EXPECT_EQ(TestMovies2.getMovieTestingOnly(5).getName(), "My Bodyguard");
+   EXPECT_EQ(TestMovies2.getMovieTestingOnly(6).getName(), "Seems Like Old Times");
+   EXPECT_EQ(TestMovies2.getMovieTestingOnly(7).getName(), "Private Benjamin");
+   EXPECT_EQ(TestMovies2.getMovieTestingOnly(8).getName(), "The Hollywood Knights");
+   EXPECT_EQ(TestMovies2.getMovieTestingOnly(9).getName(), "Motel Hell");
+ 
+   EXPECT_EQ(TestMovies2.sizeofRecommendedForTestingOnly(), 2245);
+ 
+}
+ 
+TEST(RecommendedMoviesGenreTests, dramaTest) {
+   Movies TestMovies3;
+   string genre = "Drama";
+  
+   TestMovies3.generateRecommendations(genre, 1);
+ 
+   EXPECT_EQ(TestMovies3.getMovieTestingOnly(0).getName(), "The Shining");
+   EXPECT_EQ(TestMovies3.getMovieTestingOnly(1).getName(), "Ordinary People");
+   EXPECT_EQ(TestMovies3.getMovieTestingOnly(2).getName(), "Somewhere in Time");
+   EXPECT_EQ(TestMovies3.getMovieTestingOnly(3).getName(), "Fame");
+   EXPECT_EQ(TestMovies3.getMovieTestingOnly(4).getName(), "Urban Cowboy");
+   EXPECT_EQ(TestMovies3.getMovieTestingOnly(5).getName(), "Cattle Annie and Little Britches");
+   EXPECT_EQ(TestMovies3.getMovieTestingOnly(6).getName(), "The Jazz Singer");
+   EXPECT_EQ(TestMovies3.getMovieTestingOnly(7).getName(), "Breaker Morant");
+   EXPECT_EQ(TestMovies3.getMovieTestingOnly(8).getName(), "The Competition");
+   EXPECT_EQ(TestMovies3.getMovieTestingOnly(9).getName(), "Honeysuckle Rose");
+ 
+   EXPECT_EQ(TestMovies3.sizeofRecommendedForTestingOnly(), 1518);
+ 
+}
+ 
+TEST(RecommendedMoviesGenreTests, GenreNotInListTest) {
+   Movies TestMovies4;
+   string genre = "Fiction";
+ 
+   TestMovies4.generateRecommendations(genre, 1);
+ 
+   EXPECT_EQ(TestMovies4.sizeofRecommendedForTestingOnly(), 0);
+}
 
 TEST(RecommendedMoviesDirectorTests, IrvinKershnerTest) {
    Movies TestMovies1;
@@ -245,9 +360,6 @@ TEST(RecommendedMoviesDirectorTests, StanleyKubrickTest) {
    EXPECT_EQ(TestMovies2.sizeofRecommendedForTestingOnly(), 3);
  
 }
-
-
-
 
 
 TEST(RecommendedMoviesActorTests, DwayneJohnsonTest) {
@@ -282,6 +394,14 @@ TEST(RecommendedMoviesActorTests, ChrisPrattTest) {
 
 
 
+
+
+
+
+
+
+
+
 TEST(PrintRecommendedMoviesTests, NoMoviesFound) {
     Movies TestMovies;
     for (int i = 0; i < 10; ++i) {
@@ -303,7 +423,6 @@ TEST(PrintRecommendedMoviesTests, NotFullPageMovies) {
     }
     EXPECT_EQ(TestMovies.PrintRecommendedMovies(0), 5);
 }
-
 
 
 
@@ -402,7 +521,6 @@ TEST(DoesDirectorExistTests, NotInallMovies2) {
 
     EXPECT_EQ(TestMovies5.doesDirectorExist(director), false);
 }
-
 
 
 int main(int argc, char **argv) {
